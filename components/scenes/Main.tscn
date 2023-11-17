@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce04xtb7n005x"]
+
+[ext_resource type="PackedScene" uid="uid://ctj5c77s4j3r6" path="res://components/character/Turtle.tscn" id="1_emo1l"]
+[ext_resource type="PackedScene" uid="uid://dhwiue3jupmtq" path="res://components/level/Arena.tscn" id="2_26d1a"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Turtle" parent="." instance=ExtResource("1_emo1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48241, 0, -10.4816)
+
+[node name="Turtle2" parent="." instance=ExtResource("1_emo1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4797, 0, 12.166)
+
+[node name="Turtle3" parent="." instance=ExtResource("1_emo1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17955, 0.0358028, -9.12213)
+
+[node name="Turtle4" parent="." instance=ExtResource("1_emo1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.76587, 0.0716057, 11.5125)
+
+[node name="Arena" parent="." instance=ExtResource("2_26d1a")]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctj5c77s4j3r6"]
+
+[ext_resource type="PackedScene" uid="uid://dnqtdjljcusm7" path="res://components/models/TurtleModel.tscn" id="1_crga7"]
+
+[node name="Turtle" type="Node3D"]
+
+[node name="TurtleModel" parent="." instance=ExtResource("1_crga7")]
