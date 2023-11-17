@@ -18,3 +18,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17955, 0.0358028, -9.12213)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.76587, 0.0716057, 11.5125)
 
 [node name="Arena" parent="." instance=ExtResource("2_26d1a")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20.2532, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.168025, 0.985783, 0, -0.985783, -0.168025, 0, 38.076, 11.2076)
