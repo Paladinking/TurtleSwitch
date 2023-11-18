@@ -23,7 +23,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5605, 0.103617, -8.09784)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4406, 0.171824, 7.16924)
 
 [node name="Arena" parent="." instance=ExtResource("2_26d1a")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.144318, 0.00427437, -0.00285578)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50, 0)
@@ -33,6 +33,7 @@ fov = 25.0
 transform = Transform3D(1, 0, 0, 0, -0.168025, 0.985783, 0, -0.985783, -0.168025, 0, 38.076, 11.2076)
 
 [node name="BasicShell" parent="." instance=ExtResource("4_ut3ve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.95594)
 
 [node name="BasicShellPickup" parent="." instance=ExtResource("5_5kuh5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24334, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24334, -6.37837)
