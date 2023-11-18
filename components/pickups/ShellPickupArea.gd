@@ -5,5 +5,6 @@ extends Area3D
 var shell_type: Shell.Kind
 
 
-func get_shell():
-	return get_parent()
+func collect_pickup():
+	get_parent().queue_free()
+	return shell_type

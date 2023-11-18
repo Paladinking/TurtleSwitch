@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 const ACCELERATION = 3.0
 const MAX_VELOCITY = 11.0
-const FRICTION = 0.0004
+const FRICTION = 0.04
 const DASH_SPEED = 14.
 const DASH_TIME = 0.2
 const MAX_ROTATION = PI / 16
@@ -26,9 +26,7 @@ func _ready():
 		func(area: Area3D):
 			print(area)
 			if area is ShellPickupArea:
-				pick_up(area.shell_type)
-				area.get_shell().queue_free()
-				
+				pick_up(area.collect_pickup())
 	)
 
 
@@ -81,6 +79,10 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-func pick_up(shell: Shell.Kind):
-	print("pick up shell ", shell)
+func pick_up(shell_type: Shell.Kind):
+	print("pick up shell ", shell_type)
+	var shell = Shell.instantiate(Shell.Kind.BASIC)
+	shell.process_mode = Node.PROCESS_MODE_DISABLED
+	self.add_child(shell, true)
+	#shell.disable()
 
