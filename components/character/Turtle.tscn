@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctj5c77s4j3r6"]
+[gd_scene load_steps=6 format=3 uid="uid://ctj5c77s4j3r6"]
 
 [ext_resource type="Script" path="res://components/character/Turtle.gd" id="1_0jj88"]
 [ext_resource type="PackedScene" uid="uid://dnqtdjljcusm7" path="res://components/models/TurtleModel.tscn" id="1_crga7"]
@@ -7,6 +7,9 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mn71o"]
 radius = 0.3
 height = 1.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w87pd"]
+radius = 0.609137
 
 [node name="Turtle" type="CharacterBody3D"]
 script = ExtResource("1_0jj88")
@@ -19,3 +22,10 @@ shape = SubResource("CapsuleShape3D_mn71o")
 
 [node name="DashCooldown" parent="." instance=ExtResource("3_rtjes")]
 cooldown = 3.0
+
+[node name="PickupDetector" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupDetector"]
+shape = SubResource("SphereShape3D_w87pd")
