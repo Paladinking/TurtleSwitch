@@ -1,9 +1,10 @@
 extends CharacterBody3D
 
-
 const SPEED = 3.0
+const FRICTION = 0.04
 const DASH_SPEED = 7.
 const DASH_TIME = 0.1
+const MAX_ROTATION = PI / 16
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -40,18 +41,25 @@ func _physics_process(delta):
 	if _is_dashing:
 		velocity.x = _dash_direction.x * DASH_SPEED
 		velocity.z = _dash_direction.z * DASH_SPEED
-
-		move_and_slide()
 	else:
 		var input_dir = Input.get_vector(left_input, right_input, up_input, down_input)
 	
 		if input_dir:
 			var angle = -atan2(input_dir.y, input_dir.x) + PI / 2
-			rotation.y = angle
-			velocity.x = input_dir.x * SPEED
-			velocity.z = input_dir.y * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
+			
+			var diff = atan2(sin(angle-rotation.y), cos(angle-rotation.y))
+			if abs(diff) < MAX_ROTATION:
+				rotation.y = angle
+			else:
+				rotation.y += MAX_ROTATION * sign(diff)
 
-		move_and_slide()
+			velocity.x += input_dir.x * SPEED
+			velocity.z += input_dir.y * SPEED
+		
+		var factor = velocity.length_squared()
+		var old_y = velocity.y
+		velocity = velocity.move_toward(Vector3(0, 0, 0), factor * FRICTION)
+		velocity.y = old_y
+			
+	
+	move_and_slide()
