@@ -28,6 +28,8 @@ const KEYBOARD_INPUTS = [
 	[KEY_SPACE]
 ]
 
+
+
 func _ready():
 	var joypads = Input.get_connected_joypads()
 	
@@ -58,6 +60,16 @@ func _ready():
 		player.set_input(index)
 
 
+
 func _unhandled_key_input(event):
 	if event.is_pressed() and event.keycode == KEY_ESCAPE:
 		get_tree().quit(0)
+
+	elif event.is_pressed() and event.keycode == KEY_O:
+#		print("Engaging layout")
+		$Arena.engage_layout("HillAndPillars")
+
+	elif event.is_pressed() and event.keycode == KEY_P:
+#		print("Disengaging layout")
+		$Arena.disengage_layout("HillAndPillars")
+

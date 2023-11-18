@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bm7cfy5nwksgl"]
+
+[ext_resource type="PackedScene" uid="uid://d0q8hy3sbappy" path="res://components/level/layouts/structures/OmniRamp.tscn" id="1_xdtbd"]
+[ext_resource type="PackedScene" uid="uid://bf40k4oc28qf3" path="res://components/level/layouts/structures/Arch.tscn" id="2_y6p5k"]
+[ext_resource type="PackedScene" uid="uid://cjkv0kk2p8jvb" path="res://components/level/layouts/structures/PillarTall.tscn" id="4_wgfn8"]
+[ext_resource type="PackedScene" uid="uid://cj2id74mr53on" path="res://components/level/layouts/structures/PillarMedium.tscn" id="5_rr644"]
+[ext_resource type="PackedScene" uid="uid://b2mbncn7eg1x0" path="res://components/level/layouts/structures/PillarShort.tscn" id="6_kelok"]
+
+[node name="HillAndPillars" type="Node3D"]
+
+[node name="OmniRamp" parent="." instance=ExtResource("1_xdtbd")]
+
+[node name="Arch" parent="." instance=ExtResource("2_y6p5k")]
+transform = Transform3D(0.602163, 0, 0.798373, 0, 1, 0, -0.798373, 0, 0.602163, 4.5, 0, -5.5)
+
+[node name="PillarTall" parent="." instance=ExtResource("4_wgfn8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10901, 0, -5.96751)
+
+[node name="PillarMedium" parent="." instance=ExtResource("5_rr644")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04084, 0, -9)
+
+[node name="PillarShort" parent="." instance=ExtResource("6_kelok")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54368, 0, -6.96319)
+
+[node name="PillarMedium2" parent="." instance=ExtResource("5_rr644")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 9)
+
+[node name="PillarShort2" parent="." instance=ExtResource("6_kelok")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54368, 0, 7.87796)
+
+[node name="PillarTall2" parent="." instance=ExtResource("4_wgfn8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13348, 0, 11.0323)
