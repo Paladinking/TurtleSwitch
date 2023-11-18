@@ -1,41 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://ce04xtb7n005x"]
+[gd_scene load_steps=6 format=3 uid="uid://ce04xtb7n005x"]
 
 [ext_resource type="PackedScene" uid="uid://ctj5c77s4j3r6" path="res://components/character/Turtle.tscn" id="1_emo1l"]
 [ext_resource type="Script" path="res://components/scenes/Main.gd" id="1_s0jt8"]
 [ext_resource type="PackedScene" uid="uid://dhwiue3jupmtq" path="res://components/level/Arena.tscn" id="2_26d1a"]
 [ext_resource type="PackedScene" uid="uid://cf00sxbeqr0ve" path="res://components/pickups/ShellPickup.tscn" id="4_hui7w"]
+[ext_resource type="Environment" uid="uid://b4h5hv0btjinn" path="res://components/Environment.tres" id="4_wr6pt"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_s0jt8")
-metadata/Players = [NodePath("Turtle"), NodePath("Turtle2"), NodePath("Turtle3"), NodePath("Turtle4")]
-
-[node name="Turtle" parent="." instance=ExtResource("1_emo1l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.86233, 0, -8.40672)
-
-[node name="Turtle2" parent="." instance=ExtResource("1_emo1l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4797, 0, 7.22475)
-
-[node name="Turtle3" parent="." instance=ExtResource("1_emo1l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5605, 0.103617, -8.09784)
-
-[node name="Turtle4" parent="." instance=ExtResource("1_emo1l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4406, 0.171824, 7.16924)
-
-[node name="Arena" parent="." instance=ExtResource("2_26d1a")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+metadata/Players = [NodePath("Turtles/Turtle"), NodePath("Turtles/Turtle2"), NodePath("Turtles/Turtle3"), NodePath("Turtles/Turtle4")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.31207, 0.950059, 0, -0.950059, 0.31207, 0, 49.5661, 17.8446)
+environment = ExtResource("4_wr6pt")
 current = true
 fov = 25.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.168025, 0.985783, 0, -0.985783, -0.168025, 0, 38.076, 11.2076)
+[node name="Turtles" type="Node" parent="."]
 
-[node name="GoldenShell" parent="." instance=ExtResource("4_hui7w")]
+[node name="Turtle" parent="Turtles" instance=ExtResource("1_emo1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.86233, 0, -8.40672)
+
+[node name="Turtle2" parent="Turtles" instance=ExtResource("1_emo1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4797, 0, 7.22475)
+
+[node name="Turtle3" parent="Turtles" instance=ExtResource("1_emo1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5605, 0.103617, -8.09784)
+
+[node name="Turtle4" parent="Turtles" instance=ExtResource("1_emo1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4406, 0.171824, 7.16924)
+
+[node name="Level" type="Node" parent="."]
+
+[node name="Arena" parent="Level" instance=ExtResource("2_26d1a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="GoldenShell" parent="Level" instance=ExtResource("4_hui7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9056, 0.284819, 3.16177)
 kind = 1
 
-[node name="PowerShell" parent="." instance=ExtResource("4_hui7w")]
+[node name="PowerShell" parent="Level" instance=ExtResource("4_hui7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27022, 0)
 kind = 2
+
+[node name="Graphics" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Graphics"]
+environment = ExtResource("4_wr6pt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Graphics"]
+transform = Transform3D(0.976706, -0.0996671, -0.190031, 0.214582, 0.453652, 0.864959, -3.99774e-09, -0.885588, 0.464471, 0, 38.076, 11.2076)
+shadow_enabled = true

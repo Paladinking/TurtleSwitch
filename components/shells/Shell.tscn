@@ -18,5 +18,7 @@ shape = SubResource("SphereShape3D_lmne2")
 [node name="ShellBasic" parent="." instance=ExtResource("2_xbqe2")]
 
 [node name="ShellPower" parent="." instance=ExtResource("3_pprgn")]
+visible = false
 
 [node name="PowerShell" parent="." instance=ExtResource("4_v5vfe")]
+visible = false
