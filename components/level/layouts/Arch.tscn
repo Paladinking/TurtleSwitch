@@ -21,7 +21,7 @@ height = 4.0
 height = 4.0
 radius = 0.4
 
-[node name="LayoutArch" type="Node3D"]
+[node name="Arch" type="Node3D"]
 
 [node name="PillarRight" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
