@@ -13,7 +13,7 @@ size = Vector3(4, 2, 2)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rg2yr"]
 points = PackedVector3Array(2, -1, -1, -2, -1, -1, 2, -1, 1, -2, -1, 1, 2, 1, -1, 2, 1, 1)
 
-[node name="LayoutOmniRamp" type="Node3D"]
+[node name="OmniRamp" type="Node3D"]
 
 [node name="MiddleHill" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -25,7 +25,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4406, 0.171824, 7.16924)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.144318, 0.00427437, -0.00285578)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 14.5112, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50, 0)
+fov = 25.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.168025, 0.985783, 0, -0.985783, -0.168025, 0, 38.076, 11.2076)
