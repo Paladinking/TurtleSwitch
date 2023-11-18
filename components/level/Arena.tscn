@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhwiue3jupmtq"]
+[gd_scene load_steps=6 format=3 uid="uid://dhwiue3jupmtq"]
 
 [ext_resource type="Script" path="res://components/level/Arena.gd" id="1_7o1qr"]
 [ext_resource type="PackedScene" uid="uid://1u7itlvvelc7" path="res://components/models/ArenaModel.tscn" id="1_xxgve"]
+[ext_resource type="PackedScene" uid="uid://b2dqx1wth138t" path="res://components/level/layouts/LayoutOmniRamp.tscn" id="3_cbnqn"]
+[ext_resource type="PackedScene" uid="uid://dty1fhee3snrk" path="res://components/level/layouts/LayoutArch.tscn" id="4_s1vx4"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_fp64p"]
 
 [node name="Arena" type="Node3D"]
 script = ExtResource("1_7o1qr")
 
 [node name="ArenaModel" parent="." instance=ExtResource("1_xxgve")]
+
+[node name="LayoutOmniRamp" parent="." instance=ExtResource("3_cbnqn")]
+
+[node name="LayoutArch" parent="." instance=ExtResource("4_s1vx4")]
+transform = Transform3D(0.602163, 0, 0.798373, 0, 1, 0, -0.798373, 0, 0.602163, 4.543, 0, -5.489)
+
+[node name="TopDirectionIndicator" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 16, 0, 0)
+mesh = SubResource("PrismMesh_fp64p")
