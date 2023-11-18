@@ -1,21 +1,31 @@
 extends Node3D
 
 const INPUT_NAMES = [
-	"left", "right", "up", "down"
+	"left", "right", "up", "down", "action"
 ]
 
-const CONTROLLER_INPUTS = [
-	[JOY_BUTTON_DPAD_LEFT, JOY_AXIS_LEFT_X, -1.0],
-	[JOY_BUTTON_DPAD_RIGHT, JOY_AXIS_LEFT_X, 1.0],
-	[JOY_BUTTON_DPAD_UP, JOY_AXIS_LEFT_Y, -1.0],
-	[JOY_BUTTON_DPAD_DOWN, JOY_AXIS_LEFT_Y, 1.0]
+const JOY_AXIS_INPUTS = [
+	[[JOY_AXIS_LEFT_X, -1.0]],
+	[[JOY_AXIS_LEFT_X, 1.0]],
+	[[JOY_AXIS_LEFT_Y, -1.0]],
+	[[JOY_AXIS_LEFT_Y, 1.0]],
+	[]
+]
+
+const JOY_BUTTON_INPUTS = [
+	[JOY_BUTTON_DPAD_LEFT],
+	[JOY_BUTTON_DPAD_RIGHT],
+	[JOY_BUTTON_DPAD_UP],
+	[JOY_BUTTON_DPAD_DOWN],
+	[JOY_BUTTON_A]
 ]
 
 const KEYBOARD_INPUTS = [
 	[KEY_LEFT, KEY_A],
 	[KEY_RIGHT, KEY_D],
 	[KEY_UP, KEY_W],
-	[KEY_DOWN, KEY_S]
+	[KEY_DOWN, KEY_S],
+	[KEY_SPACE]
 ]
 
 func _ready():
@@ -25,23 +35,25 @@ func _ready():
 	for index in players.size():
 		var player = get_node(players[index])
 		for i in INPUT_NAMES.size():
-			var name = "p" + str(index) + "_" + INPUT_NAMES[i]
-			InputMap.add_action(name)
+			var input_name = "p" + str(index) + "_" + INPUT_NAMES[i]
+			InputMap.add_action(input_name)
 			if index < joypads.size():
-				var ev1 = InputEventJoypadButton.new()
-				ev1.button_index = CONTROLLER_INPUTS[i][0]
-				ev1.device = joypads[index]
-				InputMap.action_add_event(name, ev1)
-				var ev2 = InputEventJoypadMotion.new()
-				ev2.axis = CONTROLLER_INPUTS[i][1]
-				ev2.axis_value = CONTROLLER_INPUTS[i][2]
-				ev2.device = joypads[index]
-				InputMap.action_add_event(name, ev2)
+				for button in JOY_BUTTON_INPUTS[i]:
+					var ev = InputEventJoypadButton.new()
+					ev.button_index = button
+					ev.device = joypads[index]
+					InputMap.action_add_event(input_name, ev)
+				for joy_axis in JOY_AXIS_INPUTS[i]:
+					var ev = InputEventJoypadMotion.new()
+					ev.axis = joy_axis[0]
+					ev.axis_value = joy_axis[1]
+					ev.device = joypads[index]
+					InputMap.action_add_event(input_name, ev)
 			elif index == joypads.size():
 				for key in KEYBOARD_INPUTS[i]:
 					var ev = InputEventKey.new()
 					ev.keycode = key
-					InputMap.action_add_event(name, ev)
+					InputMap.action_add_event(input_name, ev)
 
 		player.set_input(index)
 

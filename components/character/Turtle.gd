@@ -6,16 +6,18 @@ const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var left = "none"
-var right = "none"
-var up = "none"
-var down = "none"
+var left_input
+var right_input
+var up_input
+var down_input
+var action_input
 
 func set_input(index):
-	left = "p" + str(index) + "_left"
-	up = "p" + str(index) + "_up"
-	down = "p" + str(index) + "_down"
-	right = "p" + str(index) + "_right"
+	left_input = "p" + str(index) + "_left"
+	up_input = "p" + str(index) + "_up"
+	down_input = "p" + str(index) + "_down"
+	right_input = "p" + str(index) + "_right"
+	action_input = "p" + str(index) + "_action"
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -28,8 +30,9 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector(left, right, up, down)
+	var input_dir = Input.get_vector(left_input, right_input, up_input, down_input)
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
