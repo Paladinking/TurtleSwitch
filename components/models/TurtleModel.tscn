@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://dnqtdjljcusm7"]
 
-[ext_resource type="ArrayMesh" uid="uid://cr8w8n0c7ue1j" path="res://res/models/character/shell.obj" id="1_l8yup"]
+[ext_resource type="ArrayMesh" uid="uid://me3jg7rf4iit" path="res://res/models/character/turt.obj" id="1_w51u7"]
 
 [node name="TurtleModel" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_l8yup")
+mesh = ExtResource("1_w51u7")

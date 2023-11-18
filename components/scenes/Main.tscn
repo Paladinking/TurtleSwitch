@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce04xtb7n005x"]
+[gd_scene load_steps=5 format=3 uid="uid://ce04xtb7n005x"]
 
 [ext_resource type="PackedScene" uid="uid://ctj5c77s4j3r6" path="res://components/character/Turtle.tscn" id="1_emo1l"]
 [ext_resource type="Script" path="res://components/scenes/Main.gd" id="1_s0jt8"]
 [ext_resource type="PackedScene" uid="uid://dhwiue3jupmtq" path="res://components/level/Arena.tscn" id="2_26d1a"]
+[ext_resource type="PackedScene" uid="uid://croclv6ieoj7g" path="res://components/shells/BasicShell.tscn" id="4_ut3ve"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_s0jt8")
@@ -28,3 +29,5 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 14.
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.168025, 0.985783, 0, -0.985783, -0.168025, 0, 38.076, 11.2076)
+
+[node name="BasicShell" parent="." instance=ExtResource("4_ut3ve")]
