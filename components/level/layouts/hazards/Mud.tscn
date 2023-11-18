@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dye1hic7a3723"]
+
+[ext_resource type="Script" path="res://components/level/layouts/hazards/Mud.gd" id="1_dv7v4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_divm4"]
+albedo_color = Color(0.270588, 0.180392, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kefm7"]
+top_radius = 4.0
+bottom_radius = 4.0
+height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6d3fl"]
+height = 1.0
+radius = 4.0
+
+[node name="Mud" type="Node3D"]
+script = ExtResource("1_dv7v4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+material_override = SubResource("StandardMaterial3D_divm4")
+mesh = SubResource("CylinderMesh_kefm7")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_6d3fl")

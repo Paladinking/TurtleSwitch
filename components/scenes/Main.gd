@@ -65,11 +65,18 @@ func _unhandled_key_input(event):
 	if event.is_pressed() and event.keycode == KEY_ESCAPE:
 		get_tree().quit(0)
 
-	elif event.is_pressed() and event.keycode == KEY_O:
+	elif event.is_pressed() and event.keycode == KEY_I:
 #		print("Engaging layout")
 		$Arena.engage_layout("HillAndPillars")
 
-	elif event.is_pressed() and event.keycode == KEY_P:
+	elif event.is_pressed() and event.keycode == KEY_O:
 #		print("Disengaging layout")
 		$Arena.disengage_layout("HillAndPillars")
 
+	elif event.is_pressed() and event.keycode == KEY_K:
+#		print("Disengaging layout")
+		$Arena.engage_layout("IceAndMud")
+
+	elif event.is_pressed() and event.keycode == KEY_L:
+#		print("Disengaging layout")
+		$Arena.disengage_layout("IceAndMud")

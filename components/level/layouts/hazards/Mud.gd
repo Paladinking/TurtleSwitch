@@ -11,7 +11,7 @@ var radius: float = 5:
 #		update_configuration_warnings()
 
 
-# !DO NOT! make multiple Ice sheets overlap, exiting one will remove on_ice
+# !DO NOT! make multiple Mud pits overlap, exiting one will remove in_mud
 # even if they are still on another
 
 
@@ -25,12 +25,12 @@ func _ready():
 	area.body_entered.connect(
 		func(body : Node3D):
 			if (body is Turtle):
-				body.on_ice = true
+				body.in_mud = true
 	)
 	area.body_exited.connect(
 		func(body : Node3D):
 			if (body is Turtle):
-				body.on_ice = false
+				body.in_mud = false
 	)
 
 	#if Engine.is_editor_hint():

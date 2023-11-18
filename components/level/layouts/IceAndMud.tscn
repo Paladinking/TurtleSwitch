@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b34wrd56m1htn"]
+
+[ext_resource type="PackedScene" uid="uid://prbjd4uvyjf4" path="res://components/level/layouts/hazards/Ice.tscn" id="1_eusmh"]
+[ext_resource type="PackedScene" uid="uid://dye1hic7a3723" path="res://components/level/layouts/hazards/Mud.tscn" id="2_hvpfc"]
+
+[node name="IceAndMud" type="Node3D"]
+
+[node name="Ice" parent="." instance=ExtResource("1_eusmh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.18657, 0, -7.56213)
+
+[node name="Mud" parent="." instance=ExtResource("2_hvpfc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.54408, 0, -5.33481)
+radius = 4.0
+
+[node name="Ice2" parent="." instance=ExtResource("1_eusmh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92098, 0, 7.43238)
+
+[node name="Mud2" parent="." instance=ExtResource("2_hvpfc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.18997, 0, 4.73316)
+radius = 4.0
