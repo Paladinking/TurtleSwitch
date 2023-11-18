@@ -1,11 +1,52 @@
 extends Node3D
 
+var layouts_in_action
+var layouts_going_away
 
-# Called when the node enters the scene tree for the first time.
+static var INACTIVE_LAYOUT_HEIGHT = -10
+static var ACTIVE_LAYOUT_HEIGHT = 0
+static var LAYOUT_CHANGE_SPEED = 0.1
+
+
+
 func _ready():
-	pass # Replace with function body.
+	layouts_in_action = []
+	layouts_going_away = []
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+
+func _process(_delta):
+	for layout in layouts_in_action:
+		if layout.position.y >= ACTIVE_LAYOUT_HEIGHT:
+			layout.position.y = ACTIVE_LAYOUT_HEIGHT
+			layouts_in_action.erase(layout)
+		else:
+			layout.position.y += LAYOUT_CHANGE_SPEED
+	
+	for layout in layouts_going_away:
+		if layout.position.y <= INACTIVE_LAYOUT_HEIGHT:
+			layout.position.y = INACTIVE_LAYOUT_HEIGHT
+			layouts_going_away.erase(layout)
+		else:
+			layout.position.y -= LAYOUT_CHANGE_SPEED
+
+
+
+func engage_layout(layout_name : String):
+	var layout = get_node(layout_name) as Node3D
+	
+	if (layout not in layouts_in_action):
+		layouts_in_action.append(layout)
+		if layout in layouts_going_away:
+			layouts_going_away.erase(layout)
+
+
+
+func disengage_layout(layout_name : String):
+	var layout = get_node(layout_name) as Node3D
+	
+	if (layout not in layouts_going_away):
+		layouts_going_away.append(layout)
+		if layout in layouts_in_action:
+			layouts_in_action.erase(layout)
+
