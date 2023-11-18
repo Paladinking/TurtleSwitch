@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl0lg2bp41e3c"]
+
+[ext_resource type="Script" path="res://components/pickups/ShellPickup.gd" id="1_f05kr"]
+[ext_resource type="PackedScene" uid="uid://croclv6ieoj7g" path="res://components/shells/BasicShell.tscn" id="2_f5a67"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rd3kb"]
+radius = 0.608614
+
+[node name="BasicShellPickup" type="Area3D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_f05kr")
+shell_type = 1
+
+[node name="RigidBody3D" parent="." instance=ExtResource("2_f5a67")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_rd3kb")
