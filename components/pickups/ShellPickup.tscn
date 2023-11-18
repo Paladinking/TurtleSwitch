@@ -1,12 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf00sxbeqr0ve"]
+[gd_scene load_steps=6 format=3 uid="uid://cf00sxbeqr0ve"]
 
 [ext_resource type="Script" path="res://components/pickups/ShellPickupArea.gd" id="1_mdfuo"]
-[ext_resource type="PackedScene" uid="uid://croclv6ieoj7g" path="res://components/shells/BasicShell.tscn" id="2_kxul7"]
+[ext_resource type="Script" path="res://components/pickups/ShellPickup.gd" id="1_wefjo"]
+[ext_resource type="PackedScene" uid="uid://croclv6ieoj7g" path="res://components/shells/Shell.tscn" id="2_kxul7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_05r1g"]
 size = Vector3(0.3, 0.3, 0.6)
 
-[node name="BasicShellPickup" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_irka3"]
+
+[node name="ShellPickup" type="RigidBody3D"]
+script = ExtResource("1_wefjo")
+
+[node name="Shell" parent="." instance=ExtResource("2_kxul7")]
+kind = 2
 
 [node name="ShellPickupArea" type="Area3D" parent="."]
 collision_layer = 2
@@ -21,4 +28,6 @@ shape = SubResource("BoxShape3D_05r1g")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62254, 0, 0)
 shape = SubResource("BoxShape3D_05r1g")
 
-[node name="BasicShell" parent="." instance=ExtResource("2_kxul7")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138162, 0)
+shape = SubResource("SphereShape3D_irka3")

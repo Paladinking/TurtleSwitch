@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj0asog6m0o8n"
-path.s3tc="res://.godot/imported/shell_v4_shell_NRM.png-873387f858a57e73a42d90e2db181f14.s3tc.ctex"
+uid="uid://bioubdwri1hso"
+path.s3tc="res://.godot/imported/shell_v7_Green.png-64bb09ea4d5c3f6298d4d82a82bcc977.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://res/models/character/shell_v4_shell_NRM.png"
-dest_files=["res://.godot/imported/shell_v4_shell_NRM.png-873387f858a57e73a42d90e2db181f14.s3tc.ctex"]
+source_file="res://res/models/character/shell_v7_Green.png"
+dest_files=["res://.godot/imported/shell_v7_Green.png-64bb09ea4d5c3f6298d4d82a82bcc977.s3tc.ctex"]
 
 [params]
 
@@ -21,12 +21,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://res/models/character/shell_v4_shell_NRM.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

@@ -1,14 +1,47 @@
+@tool
 class_name Shell
+extends Node3D
 
 enum Kind {
 	NONE,
 	BASIC,
+	POWER,
 }
 
-const _empty_shell = preload("res://components/shells/EmptyShell.tscn")
-const _basic_shell = preload("res://components/shells/BasicShell.tscn")
+@onready
+var shells = [$ShellBasic, $ShellPower, $PowerShell]
 
-static func instantiate(kind : Kind):
-	if kind == Kind.BASIC:
-		return _basic_shell.instantiate()
-	return _empty_shell.instantiate()
+@export_range(1, 100) var sclae: float:
+	set(v):
+		$Model.scale = Vector3(v, v, v)
+
+@export
+var kind: Kind:
+	set(new_kind):
+		kind = new_kind
+		update_shell_visibility()
+
+const ShellScene = preload("res://components/shells/Shell.tscn")
+
+func _ready():
+	update_shell_visibility()
+
+static func from_kind(kind: Kind):
+	var scene = ShellScene.instantiate()
+	scene.kind = kind
+	return scene
+
+func update_shell_visibility():
+	if not shells:
+		return
+		
+	for shell in shells:
+		shell.hide()
+		
+	match kind:
+		Kind.NONE:
+			pass
+		Kind.BASIC:
+			$ShellBasic.show()
+		Kind.POWER:
+			$PowerShell.show()

@@ -19,18 +19,26 @@ var action_input: String
 var _is_dashing: bool = false
 var _dash_cooldown: Cooldown
 var _dash_direction: Vector3
+var _shell: Shell = null:
+	set(new_shell):
+		if _shell != null:
+			_shell.queue_free()
+			
+		add_child(new_shell)
+		_shell = new_shell
 
 var on_ice : bool = false
-
 
 func _ready():
 	_dash_cooldown = $DashCooldown
 	$PickupDetector.area_entered.connect(
 		func(area: Area3D):
-			print(area)
 			if area is ShellPickupArea:
 				pick_up(area.collect_pickup())
 	)
+
+	$Model/AnimationPlayer.get_animation("ArmatureAction").loop_mode = Animation.LOOP_LINEAR
+	$Model/AnimationPlayer.play("ArmatureAction")
 
 
 func set_input(index):
@@ -74,9 +82,12 @@ func _physics_process(delta):
 		var factor = velocity.x * velocity.x + velocity.z * velocity.z
 		var old_y = velocity.y
 		var friction = FRICTION
-		if (on_ice):
+
+		if on_ice:
 			friction /= 20
+
 		velocity = velocity.move_toward(Vector3(0, 0, 0), factor * friction)
+
 		if factor > MAX_VELOCITY * MAX_VELOCITY:
 			var len = sqrt(factor)
 			velocity.x = velocity.x / len * MAX_VELOCITY
@@ -86,9 +97,4 @@ func _physics_process(delta):
 	move_and_slide()
 
 func pick_up(shell_type: Shell.Kind):
-	print("pick up shell ", shell_type)
-	var shell = Shell.instantiate(Shell.Kind.BASIC)
-	shell.process_mode = Node.PROCESS_MODE_DISABLED
-	self.add_child(shell, true)
-	#shell.disable()
-
+	_shell = Shell.from_kind(shell_type)
