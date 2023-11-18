@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-const SPEED = 4.0
+const SPEED = 3.0
 const DASH_SPEED = 7.
 const DASH_TIME = 0.1
 
@@ -15,6 +15,7 @@ var action_input: String
 
 var _is_dashing: bool = false
 var _dash_cooldown: Cooldown
+var _dash_direction: Vector3
 
 func _ready():
 	_dash_cooldown = $DashCooldown
@@ -33,12 +34,14 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed(action_input) and _dash_cooldown.use_cooldown():
 		_is_dashing = true
+		_dash_direction = -Vector3(cos(-rotation.y - PI / 2), 0., sin(-rotation.y - PI / 2)).normalized()
 		get_tree().create_timer(DASH_TIME).timeout.connect(func(): _is_dashing = false)
 
 	if _is_dashing:
-		var dash_direction = Vector3(1., 0., 0.)
-		velocity.x = dash_direction.x * DASH_SPEED
-		velocity.z = dash_direction.z * DASH_SPEED
+		velocity.x = _dash_direction.x * DASH_SPEED
+		velocity.z = _dash_direction.z * DASH_SPEED
+
+		move_and_slide()
 	else:
 		var input_dir = Input.get_vector(left_input, right_input, up_input, down_input)
 	
@@ -51,4 +54,4 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 
-	move_and_slide()
+		move_and_slide()
