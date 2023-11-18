@@ -1,3 +1,4 @@
+class_name Turtle
 extends CharacterBody3D
 
 const ACCELERATION = 3.0
@@ -18,6 +19,8 @@ var action_input: String
 var _is_dashing: bool = false
 var _dash_cooldown: Cooldown
 var _dash_direction: Vector3
+
+var on_ice : bool = false
 
 
 func _ready():
@@ -70,7 +73,10 @@ func _physics_process(delta):
 
 		var factor = velocity.x * velocity.x + velocity.z * velocity.z
 		var old_y = velocity.y
-		velocity = velocity.move_toward(Vector3(0, 0, 0), factor * FRICTION)
+		var friction = FRICTION
+		if (on_ice):
+			friction /= 20
+		velocity = velocity.move_toward(Vector3(0, 0, 0), factor * friction)
 		if factor > MAX_VELOCITY * MAX_VELOCITY:
 			var len = sqrt(factor)
 			velocity.x = velocity.x / len * MAX_VELOCITY

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://prbjd4uvyjf4"]
+
+[ext_resource type="Script" path="res://components/level/layouts/hazards/Ice.gd" id="1_5nh0k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_52a55"]
+albedo_color = Color(0.529412, 1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_at7u4"]
+top_radius = 6.0
+bottom_radius = 6.0
+height = 0.001
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_in7a3"]
+height = 1.0
+radius = 6.0
+
+[node name="Ice" type="Node3D"]
+script = ExtResource("1_5nh0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_52a55")
+mesh = SubResource("CylinderMesh_at7u4")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_in7a3")
