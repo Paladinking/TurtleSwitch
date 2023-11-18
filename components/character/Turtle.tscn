@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctj5c77s4j3r6"]
+[gd_scene load_steps=5 format=3 uid="uid://ctj5c77s4j3r6"]
 
 [ext_resource type="Script" path="res://components/character/Turtle.gd" id="1_0jj88"]
 [ext_resource type="PackedScene" uid="uid://dnqtdjljcusm7" path="res://components/models/TurtleModel.tscn" id="1_crga7"]
+[ext_resource type="PackedScene" uid="uid://d4jxhm4x1xv5m" path="res://components/util/Cooldown.tscn" id="3_rtjes"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vd5nw"]
-height = 1.0
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e88xy"]
+height = 0.5
 
 [node name="Turtle" type="CharacterBody3D"]
 script = ExtResource("1_0jj88")
@@ -13,4 +14,7 @@ script = ExtResource("1_0jj88")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-shape = SubResource("CapsuleShape3D_vd5nw")
+shape = SubResource("CylinderShape3D_e88xy")
+
+[node name="DashCooldown" parent="." instance=ExtResource("3_rtjes")]
+cooldown = 3.0
