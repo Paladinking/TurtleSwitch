@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dty1fhee3snrk"]
+[gd_scene load_steps=7 format=3 uid="uid://dty1fhee3snrk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1b8p3"]
 height = 4.0
@@ -7,6 +7,9 @@ height = 4.0
 height = 4.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ijodq"]
+height = 3.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ndcbi"]
 height = 3.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_leuei"]
@@ -36,7 +39,7 @@ mesh = SubResource("CapsuleMesh_ijodq")
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="PillarLeft"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PillarLeft/AnimatableBody3D"]
-shape = SubResource("CapsuleShape3D_2oorr")
+shape = SubResource("CapsuleShape3D_ndcbi")
 
 [node name="Top" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.155952, -0.987765, 0, 0.987765, 0.155952, 0, 2.19362, 0.0740347)
