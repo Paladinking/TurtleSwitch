@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://croclv6ieoj7g"]
 
-[ext_resource type="PackedScene" uid="uid://ce65ccbammndf" path="res://components/models/ShellModel.tscn" id="1_u1x8x"]
+[ext_resource type="PackedScene" uid="uid://bbg47gf8deel4" path="res://res/models/character/shell_v4.glb" id="1_68j75"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_7j8ad"]
-height = 0.5
+[sub_resource type="SphereShape3D" id="SphereShape3D_lmne2"]
 
-[node name="RigidBody3D" type="RigidBody3D"]
+[node name="BasicShell" type="RigidBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-shape = SubResource("CylinderShape3D_7j8ad")
+shape = SubResource("SphereShape3D_lmne2")
 
-[node name="MeshInstance3D" parent="." instance=ExtResource("1_u1x8x")]
+[node name="shell_v4" parent="." instance=ExtResource("1_68j75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0892662, 0)

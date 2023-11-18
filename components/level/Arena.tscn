@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://b2dqx1wth138t" path="res://components/level/layouts/OmniRamp.tscn" id="3_cbnqn"]
 [ext_resource type="PackedScene" uid="uid://dty1fhee3snrk" path="res://components/level/layouts/Arch.tscn" id="4_s1vx4"]
 [ext_resource type="PackedScene" uid="uid://bmc342816nrqw" path="res://components/level/layouts/Bridge.tscn" id="5_btmn2"]
-[ext_resource type="PackedScene" uid="uid://cycu3k3v6gm13" path="res://components/level/layouts/PillarTall.tscn" id="6_68ivp"]
-[ext_resource type="PackedScene" uid="uid://dxxvjmjedc11f" path="res://components/level/layouts/PillarMedium.tscn" id="7_0n5tn"]
-[ext_resource type="PackedScene" uid="uid://cl2q77r0yiqgu" path="res://components/level/layouts/PillarShort.tscn" id="8_agf07"]
+[ext_resource type="PackedScene" path="res://components/level/layouts/PillarTall.tscn" id="6_68ivp"]
+[ext_resource type="PackedScene" path="res://components/level/layouts/PillarMedium.tscn" id="7_0n5tn"]
+[ext_resource type="PackedScene" path="res://components/level/layouts/PillarShort.tscn" id="8_agf07"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_fp64p"]
 

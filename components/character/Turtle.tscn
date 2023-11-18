@@ -14,8 +14,16 @@ script = ExtResource("1_0jj88")
 [node name="TurtleModel" parent="." instance=ExtResource("1_crga7")]
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0463192, 0)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0.0463192, 0)
 shape = SubResource("CapsuleShape3D_mn71o")
 
 [node name="DashCooldown" parent="." instance=ExtResource("3_rtjes")]
 cooldown = 3.0
+
+[node name="PickupDetector" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="PickupDetector"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0.0463192, 0)
+shape = SubResource("CapsuleShape3D_mn71o")

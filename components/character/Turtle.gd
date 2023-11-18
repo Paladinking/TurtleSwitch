@@ -1,7 +1,8 @@
 extends CharacterBody3D
 
 const ACCELERATION = 3.0
-const FRICTION = 0.04
+const MAX_VELOCITY = 11.0
+const FRICTION = 0.0004
 const DASH_SPEED = 14.
 const DASH_TIME = 0.2
 const MAX_ROTATION = PI / 16
@@ -21,12 +22,14 @@ var _dash_direction: Vector3
 
 func _ready():
 	_dash_cooldown = $DashCooldown
-	#$PickupDetector.area_entered.connect(
-	#	func(area: Area3D):
-	#		print(area)
-	#		if area is ShellPickup:
-	#			pick_up(area.shell_type)
-	#)
+	$PickupDetector.area_entered.connect(
+		func(area: Area3D):
+			print(area)
+			if area is ShellPickupArea:
+				pick_up(area.shell_type)
+				area.get_shell().queue_free()
+				
+	)
 
 
 func set_input(index):
@@ -45,7 +48,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed(action_input) and _dash_cooldown.use_cooldown():
 		_is_dashing = true
 		_dash_direction = -(
-			Vector3(cos(-rotation.y - PI / 2), 0., sin(-rotation.y - PI / 2)).normalized()
+			Vector3(cos(rotation.y + PI), 0., sin(rotation.y)).normalized()
 		)
 		get_tree().create_timer(DASH_TIME, true, true).timeout.connect(func(): _is_dashing = false)
 
@@ -56,7 +59,7 @@ func _physics_process(delta):
 		var input_dir = Input.get_vector(left_input, right_input, up_input, down_input)
 
 		if input_dir:
-			var angle = -atan2(input_dir.y, input_dir.x) + PI / 2
+			var angle = -atan2(input_dir.y, input_dir.x)
 			
 			var diff = atan2(sin(angle-rotation.y), cos(angle-rotation.y))
 			if abs(diff) < MAX_ROTATION:
@@ -67,14 +70,17 @@ func _physics_process(delta):
 			velocity.x += input_dir.x * ACCELERATION
 			velocity.z += input_dir.y * ACCELERATION
 
-		var factor = velocity.length_squared()
+		var factor = velocity.x * velocity.x + velocity.z * velocity.z
 		var old_y = velocity.y
 		velocity = velocity.move_toward(Vector3(0, 0, 0), factor * FRICTION)
+		if factor > MAX_VELOCITY * MAX_VELOCITY:
+			var len = sqrt(factor)
+			velocity.x = velocity.x / len * MAX_VELOCITY
+			velocity.z = velocity.z / len * MAX_VELOCITY
 		velocity.y = old_y
-			
 	
 	move_and_slide()
 
 func pick_up(shell: Shell.Kind):
-	print("pick up shell ", Shell.Kind.keys()[shell])
+	print("pick up shell ", shell)
 
