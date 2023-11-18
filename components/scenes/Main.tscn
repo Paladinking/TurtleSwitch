@@ -6,21 +6,22 @@
 [node name="Main" type="Node3D"]
 
 [node name="Turtle" parent="." instance=ExtResource("1_emo1l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48241, 0, -10.4816)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.86233, 0, -8.40672)
 
 [node name="Turtle2" parent="." instance=ExtResource("1_emo1l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4797, 0, 12.166)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4797, 0, 7.22475)
 
 [node name="Turtle3" parent="." instance=ExtResource("1_emo1l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17955, 0.0358028, -9.12213)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5605, 0.103617, -8.09784)
 
 [node name="Turtle4" parent="." instance=ExtResource("1_emo1l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.76587, 0.0716057, 11.5125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4406, 0.171824, 7.16924)
 
 [node name="Arena" parent="." instance=ExtResource("2_26d1a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.144318, 0.00427437, -0.00285578)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20.2532, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 14.5112, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.168025, 0.985783, 0, -0.985783, -0.168025, 0, 38.076, 11.2076)
