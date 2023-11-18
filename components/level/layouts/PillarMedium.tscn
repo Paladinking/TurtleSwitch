@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxxvjmjedc11f"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kak7i"]
+radius = 0.45
+height = 5.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c43lx"]
+radius = 0.45
+height = 5.0
+
+[node name="PillarMedium" type="Node3D"]
+
+[node name="Pillar" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("CapsuleMesh_kak7i")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Pillar"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar/AnimatableBody3D"]
+shape = SubResource("CapsuleShape3D_c43lx")

@@ -35,7 +35,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed(action_input) and _dash_cooldown.use_cooldown():
 		_is_dashing = true
 		_dash_direction = -Vector3(cos(-rotation.y - PI / 2), 0., sin(-rotation.y - PI / 2)).normalized()
-		get_tree().create_timer(DASH_TIME).timeout.connect(func(): _is_dashing = false)
+		get_tree().create_timer(DASH_TIME, true, true).timeout.connect(func(): _is_dashing = false)
 
 	if _is_dashing:
 		velocity.x = _dash_direction.x * DASH_SPEED
