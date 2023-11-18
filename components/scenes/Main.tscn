@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ce04xtb7n005x"]
+[gd_scene load_steps=4 format=3 uid="uid://ce04xtb7n005x"]
 
 [ext_resource type="PackedScene" uid="uid://ctj5c77s4j3r6" path="res://components/character/Turtle.tscn" id="1_emo1l"]
+[ext_resource type="Script" path="res://components/scenes/Main.gd" id="1_s0jt8"]
 [ext_resource type="PackedScene" uid="uid://dhwiue3jupmtq" path="res://components/level/Arena.tscn" id="2_26d1a"]
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_s0jt8")
 
 [node name="Turtle" parent="." instance=ExtResource("1_emo1l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.86233, 0, -8.40672)
