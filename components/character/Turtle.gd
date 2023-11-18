@@ -28,6 +28,7 @@ var _shell: Shell = null:
 		_shell = new_shell
 
 var on_ice : bool = false
+var in_mud : bool = false
 
 func _ready():
 	_dash_cooldown = $DashCooldown
@@ -62,8 +63,15 @@ func _physics_process(delta):
 		get_tree().create_timer(DASH_TIME, true, true).timeout.connect(func(): _is_dashing = false)
 
 	if _is_dashing:
-		velocity.x = _dash_direction.x * DASH_SPEED
-		velocity.z = _dash_direction.z * DASH_SPEED
+		var factor = 1.0
+
+		if on_ice:
+			factor *= 1.5
+		elif in_mud:
+			factor /= 1.5
+
+		velocity.x = _dash_direction.x * DASH_SPEED * factor
+		velocity.z = _dash_direction.z * DASH_SPEED * factor
 	else:
 		var input_dir = Input.get_vector(left_input, right_input, up_input, down_input)
 
@@ -81,17 +89,20 @@ func _physics_process(delta):
 
 		var factor = velocity.x * velocity.x + velocity.z * velocity.z
 		var old_y = velocity.y
+		
 		var friction = FRICTION
 
 		if on_ice:
 			friction /= 20
-
+		elif in_mud:
+			friction *= 2
+			
 		velocity = velocity.move_toward(Vector3(0, 0, 0), factor * friction)
 
 		if factor > MAX_VELOCITY * MAX_VELOCITY:
-			var len = sqrt(factor)
-			velocity.x = velocity.x / len * MAX_VELOCITY
-			velocity.z = velocity.z / len * MAX_VELOCITY
+			var length = sqrt(factor)
+			velocity.x = velocity.x / length * MAX_VELOCITY
+			velocity.z = velocity.z / length * MAX_VELOCITY
 		velocity.y = old_y
 	
 	move_and_slide()

@@ -2,14 +2,14 @@
 extends Node3D
 
 @export_range(0.1, 10.)
-var radius: float = 5:
+var size: float = 5:
 	set(v):
-		radius = v
-		print($MeshInstance3D)
-		$MeshInstance3D.mesh.top_radius = v
-		$MeshInstance3D.mesh.bottom_radius = v
-		$Area3D/CollisionShape3D.shape.radius = v
-		update_configuration_warnings()
+		size = v
+		scale = Vector3(size, 1., size)
+
+
+# !DO NOT! make multiple Ice sheets overlap, exiting one will remove on_ice
+# even if they are still on another
 
 
 func _ready():
