@@ -9,6 +9,10 @@ static var ACTIVE_LAYOUT_HEIGHT = 0
 static var LAYOUT_CHANGE_SPEED = 0.1
 
 
+func _ready():
+	$TopDirectionIndicator.hide()
+
+
 func _process(_delta):
 	for layout in layouts_in_action:
 		if layout.position.y >= ACTIVE_LAYOUT_HEIGHT:
@@ -25,6 +29,7 @@ func _process(_delta):
 			layout.position.y -= LAYOUT_CHANGE_SPEED
 
 
+
 func engage_layout(layout_name: String):
 	var layout = get_node(layout_name) as Node3D
 
@@ -32,6 +37,7 @@ func engage_layout(layout_name: String):
 		layouts_in_action.append(layout)
 		if layout in layouts_going_away:
 			layouts_going_away.erase(layout)
+
 
 
 func disengage_layout(layout_name: String):
