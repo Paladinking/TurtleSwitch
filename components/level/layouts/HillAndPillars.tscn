@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://d0q8hy3sbappy" path="res://components/level/layouts/structures/OmniRamp.tscn" id="1_xdtbd"]
 [ext_resource type="PackedScene" uid="uid://bf40k4oc28qf3" path="res://components/level/layouts/structures/Arch.tscn" id="2_y6p5k"]
-[ext_resource type="PackedScene" uid="uid://bwackbctssk8e" path="res://components/level/layouts/structures/PillarIonic.tscn" id="7_4rydk"]
-[ext_resource type="PackedScene" uid="uid://cbgb4ggngsgmy" path="res://components/level/layouts/structures/PillarTuscan.tscn" id="8_o34tw"]
+[ext_resource type="PackedScene" path="res://components/level/layouts/structures/PillarIonic.tscn" id="7_4rydk"]
+[ext_resource type="PackedScene" path="res://components/level/layouts/structures/PillarTuscan.tscn" id="8_o34tw"]
 
 [node name="HillAndPillars" type="Node3D"]
 

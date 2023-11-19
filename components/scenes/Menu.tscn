@@ -57,7 +57,6 @@ stretch_mode = 5
 [node name="Camera3D2" type="Camera3D" parent="Node3D"]
 transform = Transform3D(0.833886, -0.0538596, -0.549303, 0, 0.995227, -0.0975829, 0.551937, 0.081373, 0.829906, -11.895, 0.5, 8.885)
 environment = ExtResource("5_jya0q")
-current = true
 fov = 40.2
 
 [node name="Level" type="Node" parent="Node3D"]

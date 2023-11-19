@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhwiue3jupmtq"]
+[gd_scene load_steps=8 format=3 uid="uid://dhwiue3jupmtq"]
 
 [ext_resource type="Script" path="res://components/level/Arena.gd" id="1_7o1qr"]
 [ext_resource type="PackedScene" uid="uid://1u7itlvvelc7" path="res://components/models/ArenaModel.tscn" id="1_xxgve"]
 [ext_resource type="PackedScene" uid="uid://bm7cfy5nwksgl" path="res://components/level/layouts/HillAndPillars.tscn" id="3_1ggsb"]
 [ext_resource type="PackedScene" uid="uid://b34wrd56m1htn" path="res://components/level/layouts/IceAndMud.tscn" id="4_xos5d"]
 [ext_resource type="PackedScene" uid="uid://u1456d7fuisa" path="res://res/models/environments/grass.glb" id="5_srfdn"]
+[ext_resource type="PackedScene" uid="uid://clgaacpl2rv5q" path="res://components/level/layouts/PillAndHillars.tscn" id="6_axkk7"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_fp64p"]
 
@@ -36,3 +37,6 @@ transform = Transform3D(1.6358, 0, -2.51478, 0, 3, 0, 2.51478, 0, 1.6358, -1.665
 
 [node name="grass5" parent="." instance=ExtResource("5_srfdn")]
 transform = Transform3D(2.8267, 0, 1.00487, 0, 3, 0, -1.00487, 0, 2.8267, -3.09961, 0, -2.10532)
+
+[node name="PillAndHillars" parent="." instance=ExtResource("6_axkk7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)

@@ -9,6 +9,7 @@ var golden_shell: Shell = $Level/GoldenShell/Shell
 @onready
 var main_ui: MainUI = $MainUI
 
+var change = 0
 
 const JOY_AXIS_INPUTS = [
 	[[JOY_AXIS_LEFT_X, -1.0]],
@@ -110,6 +111,15 @@ func change_hazards():
 		$Level/Arena.engage_layout("IceAndMud")
 		
 	hazards_active = !hazards_active
+	
+func change_layout(l):
+	if l == 1:
+		$Level/Arena.disengage_layout("PillAndHillars")
+		$Level/Arena.engage_layout("HillAndPillars")
+	else:
+		$Level/Arena.disengage_layout("HillAndPillars")
+		$Level/Arena.engage_layout("PillAndHillars")
+	
 
 
 
@@ -135,4 +145,7 @@ func change_hazards():
 
 
 func _on_timer_timeout():
+	change += 1
+	if change % 2 == 0:
+		change_layout(change / 2)
 	change_hazards()

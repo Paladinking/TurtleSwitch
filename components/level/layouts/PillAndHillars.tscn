@@ -1,0 +1,147 @@
+[gd_scene load_steps=8 format=3 uid="uid://clgaacpl2rv5q"]
+
+[ext_resource type="PackedScene" uid="uid://bbsycf6qmimg4" path="res://res/models/structures/plattform.glb" id="1_mc082"]
+[ext_resource type="PackedScene" uid="uid://bf40k4oc28qf3" path="res://components/level/layouts/structures/Arch.tscn" id="2_fdpup"]
+[ext_resource type="PackedScene" uid="uid://btlsvp2gtsgvr" path="res://res/models/structures/ramp.glb" id="2_u7hud"]
+[ext_resource type="PackedScene" path="res://components/level/layouts/structures/PillarIonic.tscn" id="3_ngbgy"]
+[ext_resource type="PackedScene" path="res://components/level/layouts/structures/PillarTuscan.tscn" id="4_1n2ru"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_grc0a"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rg2yr"]
+points = PackedVector3Array(2, -1, -1, -1.1, -1, -1, 2, -1, 1, -1.1, -1, 1, 2, 1, -1, 2, 1, 1)
+
+[node name="PillAndHillars" type="Node3D"]
+
+[node name="OmniRamp2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.96718, 0, 17.678)
+
+[node name="Plattform" parent="OmniRamp2" instance=ExtResource("1_mc082")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OmniRamp2/Plattform"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_grc0a")
+
+[node name="RampBottom" parent="OmniRamp2" instance=ExtResource("2_u7hud")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -2, 1, 0)
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OmniRamp2/RampBottom"]
+transform = Transform3D(-0.000287972, 0, 0.5, 0, 0.5, 0, -0.5, 0, -0.000287972, 0, 0, 0.5)
+shape = SubResource("ConvexPolygonShape3D_rg2yr")
+
+[node name="RampLeft" parent="OmniRamp2" instance=ExtResource("2_u7hud")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, 1, -2)
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OmniRamp2/RampLeft"]
+transform = Transform3D(-0.000287972, 0, 0.5, 0, 0.5, 0, -0.5, 0, -0.000287972, 0, 0, 0.5)
+shape = SubResource("ConvexPolygonShape3D_rg2yr")
+
+[node name="Arch" parent="." instance=ExtResource("2_fdpup")]
+transform = Transform3D(0.595818, 0, 0.803119, 0, 1, 0, -0.803119, 0, 0.595818, -1.20426, -0.152517, 7.17759)
+
+[node name="PillarIonic" parent="." instance=ExtResource("3_ngbgy")]
+transform = Transform3D(0.762804, 0, 0.64663, 0, 1, 0, -0.64663, 0, 0.762804, 4.73978, 0, 9.7724)
+
+[node name="PillarIonic2" parent="." instance=ExtResource("3_ngbgy")]
+transform = Transform3D(0.197794, 0, -0.980244, 0, 1, 0, 0.980244, 0, 0.197794, -7.17896, 0, 8.051)
+
+[node name="PillarTuscan" parent="." instance=ExtResource("4_1n2ru")]
+transform = Transform3D(1, -2.02272e-08, 1.49012e-08, 2.02272e-08, 1, -6.98492e-09, -1.49012e-08, 6.98492e-09, 1, -2.42609, 0, 12.6892)
+
+[node name="PillarIonic3" parent="." instance=ExtResource("3_ngbgy")]
+transform = Transform3D(0.6793, 0, -0.73386, 0, 1, 0, 0.73386, 0, 0.6793, 3.97922, 0, -3.49148)
+
+[node name="PillarIonic4" parent="." instance=ExtResource("3_ngbgy")]
+transform = Transform3D(-0.820332, 0, -0.571888, 0, 1, 0, 0.571888, 0, -0.820332, 1.48789, 0, -13.2741)
+
+[node name="PillarIonic4" parent="PillarIonic4" instance=ExtResource("3_ngbgy")]
+transform = Transform3D(-0.820332, 0, -0.571888, 0, 1, 0, 0.571888, 0, -0.820332, 13.1733, 0, -7.93101)
+
+[node name="PillarTuscan2" parent="." instance=ExtResource("4_1n2ru")]
+transform = Transform3D(1, -4.04543e-08, 2.98023e-08, 4.04543e-08, 1, -1.39698e-08, -2.98023e-08, 1.39698e-08, 1, -5.67982, -1.78888e-07, -4.24129)
+
+[node name="OmniRamp3" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.12064, 0, -17.725)
+
+[node name="Plattform" parent="OmniRamp3" instance=ExtResource("1_mc082")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OmniRamp3/Plattform"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_grc0a")
+
+[node name="RampBottom" parent="OmniRamp3" instance=ExtResource("2_u7hud")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -2, 1, 0)
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OmniRamp3/RampBottom"]
+transform = Transform3D(-0.000287972, 0, 0.5, 0, 0.5, 0, -0.5, 0, -0.000287972, 0, 0, 0.5)
+shape = SubResource("ConvexPolygonShape3D_rg2yr")
+
+[node name="RampLeft" parent="OmniRamp3" instance=ExtResource("2_u7hud")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, 1, -2)
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OmniRamp3/RampLeft"]
+transform = Transform3D(-0.000287972, 0, 0.5, 0, 0.5, 0, -0.5, 0, -0.000287972, 0, 0, 0.5)
+shape = SubResource("ConvexPolygonShape3D_rg2yr")
+
+[node name="OmniRamp3" type="Node3D" parent="OmniRamp3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0382557, 0, -16.0699)
+
+[node name="Plattform" parent="OmniRamp3/OmniRamp3" instance=ExtResource("1_mc082")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OmniRamp3/OmniRamp3/Plattform"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_grc0a")
+
+[node name="RampBottom" parent="OmniRamp3/OmniRamp3" instance=ExtResource("2_u7hud")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -2, 1, 0)
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OmniRamp3/OmniRamp3/RampBottom"]
+transform = Transform3D(-0.000287972, 0, 0.5, 0, 0.5, 0, -0.5, 0, -0.000287972, 0, 0, 0.5)
+shape = SubResource("ConvexPolygonShape3D_rg2yr")
+
+[node name="RampLeft" parent="OmniRamp3/OmniRamp3" instance=ExtResource("2_u7hud")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, 1, -2)
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OmniRamp3/OmniRamp3/RampLeft"]
+transform = Transform3D(-0.000287972, 0, 0.5, 0, 0.5, 0, -0.5, 0, -0.000287972, 0, 0, 0.5)
+shape = SubResource("ConvexPolygonShape3D_rg2yr")
+
+[node name="OmniRamp3" type="Node3D" parent="OmniRamp3/OmniRamp3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.122051, 0, -35.6426)
+
+[node name="Plattform" parent="OmniRamp3/OmniRamp3/OmniRamp3" instance=ExtResource("1_mc082")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OmniRamp3/OmniRamp3/OmniRamp3/Plattform"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_grc0a")
+
+[node name="RampBottom" parent="OmniRamp3/OmniRamp3/OmniRamp3" instance=ExtResource("2_u7hud")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -2, 1, 0)
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OmniRamp3/OmniRamp3/OmniRamp3/RampBottom"]
+transform = Transform3D(-0.000287972, 0, 0.5, 0, 0.5, 0, -0.5, 0, -0.000287972, 0, 0, 0.5)
+shape = SubResource("ConvexPolygonShape3D_rg2yr")
+
+[node name="RampLeft" parent="OmniRamp3/OmniRamp3/OmniRamp3" instance=ExtResource("2_u7hud")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, 1, -2)
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OmniRamp3/OmniRamp3/OmniRamp3/RampLeft"]
+transform = Transform3D(-0.000287972, 0, 0.5, 0, 0.5, 0, -0.5, 0, -0.000287972, 0, 0, 0.5)
+shape = SubResource("ConvexPolygonShape3D_rg2yr")
