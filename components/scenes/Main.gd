@@ -80,8 +80,11 @@ func _ready():
 		if index > joypads.size():
 			count -= 1
 			player.queue_free()
+		
 		player.set_input(index)
 	main_ui.number_of_players = count
+	for i in count:
+		main_ui.increase_player_points(i, 0)
 	
 func _process(_delta):
 	timeout -= _delta

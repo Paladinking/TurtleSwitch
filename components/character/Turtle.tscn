@@ -28,6 +28,9 @@ cooldown = 2.0
 [node name="StunCooldown" parent="." instance=ExtResource("3_rtjes")]
 cooldown = 2.0
 
+[node name="DamageCooldown" parent="." instance=ExtResource("3_rtjes")]
+cooldown = 0.5
+
 [node name="DashCooldown" parent="." instance=ExtResource("3_rtjes")]
 
 [node name="PickupDetector" type="Area3D" parent="."]

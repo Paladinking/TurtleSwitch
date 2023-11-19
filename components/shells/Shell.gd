@@ -92,11 +92,11 @@ static func get_acceleration(shell: Shell):
 		Kind.BASIC:
 			return 4.0
 		Kind.POWER:
-			return 0.0
+			return 3.0
 		Kind.GOLDEN:
 			return 0.5
 		Kind.DASHER:
-			return 0.0
+			return 0.1
 
 static func get_dash_speed(shell: Shell):
 	var kind = Kind.NONE
