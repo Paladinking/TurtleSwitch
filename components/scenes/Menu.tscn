@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://ba4atfqbbd8n1"]
+
+[ext_resource type="Script" path="res://components/scenes/Menu.gd" id="1_s54pg"]
+[ext_resource type="Texture2D" uid="uid://bbbbus6t7thex" path="res://res/ui/title_1.png" id="2_2yrd5"]
+[ext_resource type="Texture2D" uid="uid://c2se3lgbar4a7" path="res://res/ui/play.png" id="2_cd8fh"]
+[ext_resource type="Texture2D" uid="uid://cxphr7ts8amme" path="res://res/ui/exit.png" id="3_ii745"]
+[ext_resource type="Environment" uid="uid://b4h5hv0btjinn" path="res://components/Environment.tres" id="5_jya0q"]
+[ext_resource type="PackedScene" uid="uid://dhwiue3jupmtq" path="res://components/level/Arena.tscn" id="6_uptck"]
+[ext_resource type="PackedScene" uid="uid://cf00sxbeqr0ve" path="res://components/pickups/ShellPickup.tscn" id="7_8d34v"]
+
+[node name="Menu" type="Node"]
+script = ExtResource("1_s54pg")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Logo" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_2yrd5")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="PlayButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_cd8fh")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ExitButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_ii745")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Camera3D2" type="Camera3D" parent="Node3D"]
+transform = Transform3D(0.833886, -0.0538596, -0.549303, 0, 0.995227, -0.0975829, 0.551937, 0.081373, 0.829906, -11.895, 0.5, 8.885)
+environment = ExtResource("5_jya0q")
+current = true
+fov = 40.2
+
+[node name="Level" type="Node" parent="Node3D"]
+
+[node name="Arena" parent="Node3D/Level" instance=ExtResource("6_uptck")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="TopDirectionIndicator" parent="Node3D/Level/Arena" index="1"]
+visible = false
+
+[node name="PowerShell" parent="Node3D/Level" instance=ExtResource("7_8d34v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9056, 0.284819, 3.16177)
+collision_layer = 0
+kind = 2
+
+[node name="GoldenShell" parent="Node3D/Level" instance=ExtResource("7_8d34v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27022, 0)
+collision_layer = 0
+kind = 1
+
+[node name="ShellPower" parent="Node3D/Level" instance=ExtResource("7_8d34v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14128, 3.22212, -5.22859)
+collision_layer = 0
+kind = 3
+
+[node name="Graphics" type="Node" parent="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D/Graphics"]
+environment = ExtResource("5_jya0q")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D/Graphics"]
+transform = Transform3D(0.976706, -0.0996671, -0.190031, 0.214582, 0.453652, 0.864959, -3.99774e-09, -0.885588, 0.464471, 0, 38.076, 11.2076)
+shadow_enabled = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Node3D/Graphics"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0.01)
+light_energy = 16.0
+spot_range = 177.681
+spot_angle = 10.76
+
+[editable path="Node3D/Level/Arena"]

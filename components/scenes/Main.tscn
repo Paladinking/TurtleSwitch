@@ -12,7 +12,7 @@ script = ExtResource("1_s0jt8")
 metadata/Players = [NodePath("Turtles/Turtle1"), NodePath("Turtles/Turtle2"), NodePath("Turtles/Turtle3"), NodePath("Turtles/Turtle4")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.31207, 0.950059, 0, -0.950059, 0.31207, 0, 49.5661, 17.8446)
+transform = Transform3D(1, 0, 0, 0, 0.309017, 0.951057, 0, -0.951057, 0.309017, 0, 52, 16)
 environment = ExtResource("4_wr6pt")
 current = true
 fov = 25.0
