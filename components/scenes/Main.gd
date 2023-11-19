@@ -5,6 +5,10 @@ const INPUT_NAMES = ["left", "right", "up", "down", "action"]
 @onready
 var golden_shell: Shell = $Level/GoldenShell/Shell
 
+@onready
+var main_ui: MainUI = $MainUI
+
+
 const JOY_AXIS_INPUTS = [
 	[[JOY_AXIS_LEFT_X, -1.0]],
 	[[JOY_AXIS_LEFT_X, 1.0]],
@@ -35,11 +39,13 @@ var arena = $Level/Arena
 @onready
 var level = $Level
 
+var timeout: float = 1.0
 
 func _ready():
 	var joypads = Input.get_connected_joypads()
 	var turtles: Array = $Turtles.get_children()
 
+	var count = turtles.size()
 	for index in turtles.size():
 		var player = turtles[index]
 		
@@ -66,14 +72,24 @@ func _ready():
 					var ev = InputEventKey.new()
 					ev.keycode = key
 					InputMap.action_add_event(input_name, ev)
-			else:
-				player.queue_free()
 
+		if index > joypads.size():
+			count -= 1
+			player.queue_free()
 		player.set_input(index)
-
-
+	main_ui.number_of_players = count
+	
 func _process(_delta):
+	timeout -= _delta
+	if timeout <= 0:
+		timeout = 1.0
+		for player in $Turtles.get_children():
+			if player._shell != null and player._shell.kind == Shell.Kind.GOLDEN:
+				main_ui.increase_player_points(player.id, 1)
+				break
 	if is_instance_valid(golden_shell):
+		
+			
 		pass#$Graphics/SpotLight3D.look_at(golden_shell.global_position)
 
 

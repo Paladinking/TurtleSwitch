@@ -12,12 +12,13 @@ const MIN_SPEED_FOR_ANIMATION = 5
 const SHELL_PICKUP = preload("res://components/pickups/ShellPickup.tscn")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity = 15 * ProjectSettings.get_setting("physics/3d/default_gravity")
 var left_input: String
 var right_input: String
 var up_input: String
 var down_input: String
 var action_input: String
+var id: int = -1
 
 var _collision_acceleration = Vector3(0, 0, 0)
 var _dash_cooldown: Cooldown
@@ -28,10 +29,10 @@ var _action_direction: Vector3
 var _shell: Shell = null:
 	set(new_shell):
 		if _shell != null:
-			_shell.queue_free()
+			pass#assert (_shell == null)
+			#_shell.queue_free()
 
 		if new_shell != null:
-			new_shell.reparent(self)
 			new_shell.position = Vector3(0, 0, 0)
 			new_shell.rotation = Vector3(0, 0, 0)
 
@@ -60,7 +61,9 @@ func _ready():
 			if area is ShellPickupArea:
 				if _shell != null:
 					drop_shell(-transform.basis.x * 20)
-				_shell = area.get_pickup().pick_up()
+				var s = area.get_pickup().pick_up()
+				s.reparent(self)
+				_shell = s
 				_shell_hp = Shell.get_hp(_shell)
 				
 	)
@@ -73,6 +76,7 @@ func set_input(index):
 	down_input = "p" + str(index) + "_down"
 	right_input = "p" + str(index) + "_right"
 	action_input = "p" + str(index) + "_action"
+	id = index
 
 
 func drop_shell(dir: Vector3):
@@ -120,15 +124,9 @@ func _physics_process(delta):
 				Vector3(cos(rotation.y + PI), 0., sin(rotation.y)).normalized()
 			) * 0.3
 			velocity.y = 30
-			gravity = gravity * 15
 			# Needed in case turtle gets stuck on wall
-			get_tree().create_timer(BASH_TIME, true, true).timeout.connect(
-				func():
-					if _action == Action.NONE:
-						return
-					_action = Action.NONE
-					gravity = gravity / 15
-			)
+	if _action == Action.BASH and _bash_cooldown.is_done():
+		_action = Action.NONE
 
 	if _action == Action.DASH or _action == Action.BASH:
 		var factor = 1.0
@@ -148,7 +146,6 @@ func _physics_process(delta):
 		
 		if !_was_on_floor and is_on_floor() and _action == Action.BASH:
 			_action = Action.NONE
-			gravity = gravity / 15
 
 			for body in _bash_area.get_overlapping_bodies():
 				if body is Turtle and body != self:
@@ -211,7 +208,7 @@ func _physics_process(delta):
 				collider.turtle_collision(power, dir)
 			elif collider is ShellPickup:
 				collider.apply_force(10 * velocity.length() * dir)
-			elif abs(dir.y) < 0.1 and velocity.length_squared() > 120:
+			elif abs(dir.y) < 0.1 and velocity.length_squared() > 120 and _action != Action.BASH:
 				var norm = collision_info.get_normal(i)
 				var old_y = velocity.y
 				velocity = velocity.bounce(norm)
