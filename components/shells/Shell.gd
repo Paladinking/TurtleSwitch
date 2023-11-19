@@ -12,10 +12,6 @@ enum Kind {
 @onready
 var shells = [$ShellBasic, $ShellPower, $PowerShell, $ShellGolden]
 
-@export_range(1, 100) var sclae: float:
-	set(v):
-		$Model.scale = Vector3(v, v, v)
-
 @export
 var kind: Kind:
 	set(new_kind):

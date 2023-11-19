@@ -1,12 +1,26 @@
 @tool
 class_name ShellPickup
-extends RigidBody3D
+extends Area3D
 
 @export
 var kind: Shell.Kind:
 	set(new_kind):
-		$Shell.kind = new_kind
+		update_shell_kind(new_kind)
 		kind = new_kind
 		
 func _ready():
-	$ShellPickupArea.shell_type = kind
+	update_shell_kind(kind)
+	
+	
+func update_shell_kind(kind: Shell.Kind):
+	if shell:
+		shell.kind = kind
+
+
+@onready
+var shell: Shell = $Shell
+
+func pick_up() -> Shell:
+	remove_child(shell)
+	queue_free()
+	return shell

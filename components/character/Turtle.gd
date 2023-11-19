@@ -24,7 +24,7 @@ var _shell: Shell = null:
 	set(new_shell):
 		if _shell != null:
 			_shell.queue_free()
-			
+		
 		add_child(new_shell)
 		_shell = new_shell
 
@@ -35,8 +35,8 @@ func _ready():
 	_dash_cooldown = $DashCooldown
 	$PickupDetector.area_entered.connect(
 		func(area: Area3D):
-			if area is ShellPickupArea:
-				pick_up(area.collect_pickup())
+			if area is ShellPickup:
+				_shell = area.pick_up()
 	)
 
 	$Model/AnimationPlayer.get_animation("ArmatureAction").loop_mode = Animation.LOOP_LINEAR
@@ -119,5 +119,5 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-func pick_up(shell_type: Shell.Kind):
-	_shell = Shell.from_kind(shell_type)
+func pick_up(shell: Shell):
+	_shell = shell
