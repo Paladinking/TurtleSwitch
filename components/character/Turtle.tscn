@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctj5c77s4j3r6"]
+[gd_scene load_steps=8 format=3 uid="uid://ctj5c77s4j3r6"]
 
 [ext_resource type="Script" path="res://components/character/Turtle.gd" id="1_0jj88"]
 [ext_resource type="PackedScene" uid="uid://clevv8b6dlo4" path="res://res/models/character/padda_v9.glb" id="3_38j8f"]
+[ext_resource type="Script" path="res://components/util/Cooldown.gd" id="3_b2hou"]
 [ext_resource type="PackedScene" uid="uid://d4jxhm4x1xv5m" path="res://components/util/Cooldown.tscn" id="3_rtjes"]
 [ext_resource type="PackedScene" uid="uid://bu4fpvct6180d" path="res://components/character/stars.tscn" id="4_mg5ql"]
 
@@ -27,6 +28,9 @@ cooldown = 2.0
 cooldown = 2.0
 
 [node name="DashCooldown" parent="." instance=ExtResource("3_rtjes")]
+
+[node name="DamageCooldown" type="Node" parent="."]
+script = ExtResource("3_b2hou")
 
 [node name="PickupDetector" type="Area3D" parent="."]
 collision_layer = 0

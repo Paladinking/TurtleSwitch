@@ -65,6 +65,9 @@ static func get_power(shell: Shell, is_dashing: bool):
 		Kind.GOLDEN:
 			return 2
 
+static func has_bash(shell: Shell):
+	return shell != null and shell.kind == Kind.BASIC
+
 static func get_acceleration(shell: Shell):
 	var kind = Kind.NONE
 	if shell != null:
@@ -77,7 +80,7 @@ static func get_acceleration(shell: Shell):
 		Kind.POWER:
 			return 3.0
 		Kind.GOLDEN:
-			return 2.0
+			return 0.5
 
 static func get_dash_speed(shell: Shell):
 	var kind = Kind.NONE
@@ -95,7 +98,7 @@ static func get_dash_speed(shell: Shell):
 
 static func get_action(shell: Shell):
 	if shell != null and shell.kind == Kind.BASIC:
-		return Turtle.Action.BASH
+		return Turtle.Action.DASH
 	return Turtle.Action.DASH
 
 static func get_hp(shell: Shell):
