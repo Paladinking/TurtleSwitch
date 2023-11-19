@@ -20,18 +20,19 @@ mesh = SubResource("PrismMesh_fp64p")
 [node name="HillAndPillars" parent="." instance=ExtResource("3_1ggsb")]
 
 [node name="IceAndMud" parent="." instance=ExtResource("4_xos5d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 
 [node name="grass" parent="." instance=ExtResource("5_srfdn")]
-transform = Transform3D(0.836707, 0, -0.547651, 0, 1, 0, 0.547651, 0, 0.836707, -1.66572, 0, -2.10532)
+transform = Transform3D(2.51012, 0, -1.64295, 0, 3, 0, 1.64295, 0, 2.51012, -1.66572, 0, -2.10532)
 
 [node name="grass2" parent="." instance=ExtResource("5_srfdn")]
-transform = Transform3D(0.908099, 0, 0.418755, 0, 1, 0, -0.418755, 0, 0.908099, -1.66572, 0, 1.7696)
+transform = Transform3D(2.7243, 0, 1.25626, 0, 3, 0, -1.25626, 0, 2.7243, -1.66572, 0, 1.7696)
 
 [node name="grass3" parent="." instance=ExtResource("5_srfdn")]
-transform = Transform3D(0.944175, 0, -0.329443, 0, 1, 0, 0.329443, 0, 0.944175, 6.32146, 0, -2.10532)
+transform = Transform3D(2.83253, 0, -0.98833, 0, 3, 0, 0.98833, 0, 2.83253, 6.32146, 0, -2.10532)
 
 [node name="grass4" parent="." instance=ExtResource("5_srfdn")]
-transform = Transform3D(0.545268, 0, -0.838262, 0, 1, 0, 0.838262, 0, 0.545268, -1.66572, 0, -2.97333)
+transform = Transform3D(1.6358, 0, -2.51478, 0, 3, 0, 2.51478, 0, 1.6358, -1.66572, 0, -2.97333)
 
 [node name="grass5" parent="." instance=ExtResource("5_srfdn")]
-transform = Transform3D(0.942233, 0, 0.334958, 0, 1, 0, -0.334958, 0, 0.942233, -3.09961, 0, -2.10532)
+transform = Transform3D(2.8267, 0, 1.00487, 0, 3, 0, -1.00487, 0, 2.8267, -3.09961, 0, -2.10532)
