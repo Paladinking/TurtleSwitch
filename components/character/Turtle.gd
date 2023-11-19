@@ -84,6 +84,17 @@ func _ready():
 			if anim_name == "krypa_in":
 				_action = Action.NONE
 	)
+	_stun_cooldown.on_cooldown_begin.connect(
+		func():
+			print("cooldown begin")
+			$stars.show()
+			$stars/AnimationPlayer.play("stjarnor")
+	)
+	$stars/AnimationPlayer.animation_finished.connect(
+		func(_anim):
+			$stars.hide()
+	)
+	$stars.hide()
 
 func set_input(index):
 	left_input = "p" + str(index) + "_left"
@@ -132,7 +143,10 @@ func _physics_process(delta):
 	
 	var is_controlling = _action != Action.CRAWL_IN and _stun_cooldown.is_done()
 	
-	if is_controlling:
+	if not is_controlling:
+		velocity.x = 0
+		velocity.z = 0
+	else:
 		if Input.is_action_just_pressed(action_input):
 			var action = Shell.get_action(_shell)
 			if action == Action.DASH and _dash_cooldown.use_cooldown():

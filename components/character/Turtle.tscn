@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctj5c77s4j3r6"]
+[gd_scene load_steps=7 format=3 uid="uid://ctj5c77s4j3r6"]
 
 [ext_resource type="Script" path="res://components/character/Turtle.gd" id="1_0jj88"]
 [ext_resource type="PackedScene" uid="uid://ulkdsr0wn23r" path="res://res/models/character/padda_v8.glb" id="2_nu4yf"]
 [ext_resource type="PackedScene" uid="uid://d4jxhm4x1xv5m" path="res://components/util/Cooldown.tscn" id="3_rtjes"]
+[ext_resource type="PackedScene" path="res://components/character/stars.tscn" id="4_y7eco"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mn71o"]
 radius = 0.396602
@@ -41,3 +42,5 @@ shape = SubResource("CapsuleShape3D_mn71o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BashArea"]
 shape = SubResource("CylinderShape3D_1eb1v")
+
+[node name="stars" parent="." instance=ExtResource("4_y7eco")]

@@ -1,3 +1,4 @@
+class_name Main
 extends Node3D
 
 const INPUT_NAMES = ["left", "right", "up", "down", "action", "jump"]
