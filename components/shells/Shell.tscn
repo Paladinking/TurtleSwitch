@@ -17,7 +17,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138162, 0)
 shape = SubResource("SphereShape3D_lmne2")
 
 [node name="ShellGolden" parent="." instance=ExtResource("2_anobo")]
-visible = false
 
 [node name="ShellBasic" parent="." instance=ExtResource("2_xbqe2")]
 visible = false

@@ -80,7 +80,7 @@ func _unhandled_key_input(event):
 		arena.disengage_layout("HillAndPillars")
 
 	elif event.is_pressed() and event.keycode == KEY_K:
-#		print("Disengaging layout")
+#		print("Engaging layout")
 		arena.engage_layout("IceAndMud")
 
 	elif event.is_pressed() and event.keycode == KEY_L:
