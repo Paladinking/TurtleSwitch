@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr2w6ft2rv7hk"]
+[gd_scene load_steps=4 format=3 uid="uid://cr2w6ft2rv7hk"]
 
 [ext_resource type="PackedScene" uid="uid://dqgctrquixyb" path="res://components/ui/PlayerLabel.tscn" id="1_cqesi"]
 [ext_resource type="Script" path="res://components/ui/MainUI.gd" id="1_tqi8e"]
+[ext_resource type="FontFile" uid="uid://bubrskj40egua" path="res://res/ui_themes/sitka-3-style-font/sitka-small-599.ttf" id="3_4ga6k"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -61,3 +62,21 @@ offset_right = -0.160156
 offset_bottom = -0.440063
 text = " Player 4: "
 player_number = 4
+
+[node name="Victory" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.308
+anchor_top = 0.379
+anchor_right = 0.749
+anchor_bottom = 0.543
+offset_left = -0.360046
+offset_top = -0.320007
+offset_right = 0.919922
+offset_bottom = -0.440063
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("3_4ga6k")
+theme_override_font_sizes/font_size = 120
+text = "Player X Won"

@@ -20,6 +20,9 @@ func set_number_of_players(n : int):
 		else:
 			get_node("PlayerLabel" + str(i)).hide()
 
+func show_victory(player_number: int):
+	$Victory.text = "Player " + str(player_number) + " won!!!"
+	$Victory.show()
 
 func increase_player_points(player_number : int, points : int):
 	if 0 <= player_number and player_number < MAX_NUMBER_OF_PLAYERS:
@@ -34,5 +37,5 @@ func set_player_points(player_number : int, points : int):
 
 func get_player_points(player_number : int):
 	if 0 <= player_number and player_number < MAX_NUMBER_OF_PLAYERS:
-		get_node("PlayerLabel" + str(player_number + 1)).get_points()
+		return get_node("PlayerLabel" + str(player_number + 1)).get_points()
 
