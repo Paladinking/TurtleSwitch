@@ -31,6 +31,7 @@ cooldown = 2.0
 
 [node name="DamageCooldown" type="Node" parent="."]
 script = ExtResource("3_b2hou")
+cooldown = 0.5
 
 [node name="PickupDetector" type="Area3D" parent="."]
 collision_layer = 0

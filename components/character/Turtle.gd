@@ -26,6 +26,7 @@ var _dash_cooldown: Cooldown
 var _bash_cooldown: Cooldown
 var _stun_cooldown: Cooldown
 var _bash_area: Area3D
+@onready var _damage_cooldown: Cooldown = $DamageCooldown
 var _action_direction: Vector3
 var _shell: Shell = null:
 	set(new_shell):
@@ -122,7 +123,7 @@ func drop_shell(dir: Vector3):
 func turtle_collision(power, dir):
 	if _collision_acceleration:
 		return
-	if _shell != null:
+	if _shell != null and _damage_cooldown.use_cooldown():
 		_shell_hp -= power
 		if _shell_hp < 0:
 			drop_shell(dir * power * 10)
