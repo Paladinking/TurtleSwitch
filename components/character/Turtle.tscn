@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctj5c77s4j3r6"]
+[gd_scene load_steps=8 format=3 uid="uid://ctj5c77s4j3r6"]
 
 [ext_resource type="Script" path="res://components/character/Turtle.gd" id="1_0jj88"]
-[ext_resource type="PackedScene" uid="uid://clevv8b6dlo4" path="res://res/models/character/padda_v9.glb" id="3_38j8f"]
-[ext_resource type="Script" path="res://components/util/Cooldown.gd" id="3_b2hou"]
+[ext_resource type="PackedScene" uid="uid://ulkdsr0wn23r" path="res://res/models/character/padda_v8.glb" id="2_nu4yf"]
 [ext_resource type="PackedScene" uid="uid://d4jxhm4x1xv5m" path="res://components/util/Cooldown.tscn" id="3_rtjes"]
 [ext_resource type="PackedScene" uid="uid://bu4fpvct6180d" path="res://components/character/stars.tscn" id="4_mg5ql"]
 [ext_resource type="PackedScene" uid="uid://dk3qn5uohl1f2" path="res://res/models/shockwave.glb" id="6_0hibf"]
@@ -18,6 +17,8 @@ radius = 3.304
 [node name="Turtle" type="CharacterBody3D"]
 script = ExtResource("1_0jj88")
 
+[node name="Model" parent="." instance=ExtResource("2_nu4yf")]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.17288, 0.0463192, 0)
 shape = SubResource("CapsuleShape3D_mn71o")
@@ -28,11 +29,10 @@ cooldown = 2.0
 [node name="StunCooldown" parent="." instance=ExtResource("3_rtjes")]
 cooldown = 2.0
 
-[node name="DashCooldown" parent="." instance=ExtResource("3_rtjes")]
-
-[node name="DamageCooldown" type="Node" parent="."]
-script = ExtResource("3_b2hou")
+[node name="DamageCooldown" parent="." instance=ExtResource("3_rtjes")]
 cooldown = 0.5
+
+[node name="DashCooldown" parent="." instance=ExtResource("3_rtjes")]
 
 [node name="PickupDetector" type="Area3D" parent="."]
 collision_layer = 0
@@ -46,8 +46,6 @@ shape = SubResource("CapsuleShape3D_mn71o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BashArea"]
 shape = SubResource("CylinderShape3D_1eb1v")
-
-[node name="Model" parent="." instance=ExtResource("3_38j8f")]
 
 [node name="stars" parent="." instance=ExtResource("4_mg5ql")]
 

@@ -33,13 +33,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0.172, -8)
 
 [node name="Level" type="Node" parent="."]
 
+[node name="BashShell" parent="Level" instance=ExtResource("4_hui7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8112, 0.569638, 1.88556)
+collision_layer = 1
+kind = 2
+
 [node name="Arena" parent="Level" instance=ExtResource("2_26d1a")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="PowerShell" parent="Level" instance=ExtResource("4_hui7w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9056, 0.284819, 3.16177)
+[node name="DashShell" parent="Level" instance=ExtResource("4_hui7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.24655, 0.284819, -2.80287)
 collision_layer = 1
-kind = 2
+kind = 4
 
 [node name="GoldenShell" parent="Level" instance=ExtResource("4_hui7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27022, 0)

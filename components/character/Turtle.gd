@@ -4,7 +4,6 @@ extends CharacterBody3D
 const COLLISION_DURATION = 0.2
 const MAX_VELOCITY = 11.0
 const FRICTION = 0.04
-const DASH_TIME = 0.2
 const BASH_TIME = 1.2
 const MAX_ROTATION = PI / 16
 const MIN_SPEED_FOR_ANIMATION = 5
@@ -99,6 +98,7 @@ func _ready():
 	func(_anim):
 		$shockwave.hide()
 	)
+	$shockwave/AnimationPlayer.speed_scale = 2.
 	$shockwave.hide()
 	$stars.hide()
 
@@ -160,7 +160,8 @@ func _physics_process(delta):
 				_action_direction = -(
 					Vector3(cos(rotation.y + PI), 0., sin(rotation.y)).normalized()
 				)
-				get_tree().create_timer(DASH_TIME, true, true).timeout.connect(func(): _action = Action.NONE)
+				var dash_time = Shell.get_dash_time(_shell)
+				get_tree().create_timer(dash_time, true, true).timeout.connect(func(): _action = Action.NONE)
 		if Input.is_action_just_pressed(jump_input) and _bash_cooldown.use_cooldown():
 			_action = Action.BASH
 			_action_direction = -(
