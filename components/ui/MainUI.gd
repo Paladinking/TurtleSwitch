@@ -21,7 +21,7 @@ func set_number_of_players(n : int):
 			get_node("PlayerLabel" + str(i)).hide()
 
 func show_victory(player_number: int):
-	$Victory.text = "Player " + str(player_number) + " won!!!"
+	$Victory.text = "Player " + str(player_number + 1) + " won!!!"
 	$Victory.show()
 
 func increase_player_points(player_number : int, points : int):
