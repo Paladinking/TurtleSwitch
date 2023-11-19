@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://components/character/Turtle.gd" id="1_0jj88"]
 [ext_resource type="PackedScene" uid="uid://ulkdsr0wn23r" path="res://res/models/character/padda_v8.glb" id="2_nu4yf"]
 [ext_resource type="PackedScene" uid="uid://d4jxhm4x1xv5m" path="res://components/util/Cooldown.tscn" id="3_rtjes"]
-[ext_resource type="PackedScene" uid="uid://bu4fpvct6180d" path="res://components/character/stars.tscn" id="4_mg5ql"]
+[ext_resource type="PackedScene" path="res://components/character/stars.tscn" id="4_mg5ql"]
 [ext_resource type="PackedScene" uid="uid://dk3qn5uohl1f2" path="res://res/models/shockwave.glb" id="6_0hibf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mn71o"]

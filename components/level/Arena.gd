@@ -12,7 +12,7 @@ const LOWEST_CHANGE_SPEED = 0.1
 const CHANGE_SPEED_FACTOR = 3.
 
 
-
+	
 func _ready():
 	$TopDirectionIndicator.hide()
 
