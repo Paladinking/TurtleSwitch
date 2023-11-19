@@ -156,7 +156,9 @@ func _physics_process(delta):
 					diff.y = 0
 					body.turtle_collision(15, diff)
 				if body is ShellPickup:
-					body.apply_force(50 * body.position - position)
+					var vec = (body.global_position - global_position).normalized()
+					print(vec)
+					body.apply_force(200 * vec)
 
 	elif _stun_cooldown.is_done():
 		var input_dir = Input.get_vector(left_input, right_input, up_input, down_input)
@@ -204,15 +206,17 @@ func _physics_process(delta):
 	if collision_info:
 		for i in collision_info.get_collision_count():
 			var collider = collision_info.get_collider(i)
+			var dir = (collision_info.get_position(i) - position).normalized()
 			if collider is Turtle:
 				var power = Shell.get_power(_shell, _action == Action.DASH)
-				collider.turtle_collision(power, -collision_info.get_normal(i))
+				collider.turtle_collision(power, dir)
 			elif collider is ShellPickup:
-				collider.apply_force(10 * velocity.length() * -collision_info.get_normal(i))
-			#elif abs(collision_info.get_normal(i).y) < 0.1 and velocity.length_squared() > 200:
-			#	velocity = -velocity * 0.8
-			#	_dash_direction = -_dash_direction
-			#	rotate_y(PI)
+				collider.apply_force(10 * velocity.length() * dir)
+			elif abs(dir.y) < 0.1 and velocity.length_squared() > 120:
+				var norm = collision_info.get_normal(i)
+				velocity = velocity.bounce(norm)
+				_action_direction = _action_direction.bounce(norm)
+				rotation.y = -atan2(velocity.z, velocity.x)
 	_was_on_floor = is_on_floor()
 	move_and_slide()
 

@@ -74,7 +74,7 @@ func _ready():
 
 func _process(_delta):
 	if is_instance_valid(golden_shell):
-		$Graphics/SpotLight3D.look_at(golden_shell.global_position)
+		pass#$Graphics/SpotLight3D.look_at(golden_shell.global_position)
 
 
 func _unhandled_key_input(event):
