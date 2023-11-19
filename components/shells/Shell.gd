@@ -97,3 +97,6 @@ static func get_action(shell: Shell):
 	if shell != null and shell.kind == Kind.BASIC:
 		return Turtle.Action.BASH
 	return Turtle.Action.DASH
+
+static func get_hp(shell: Shell):
+	return 20

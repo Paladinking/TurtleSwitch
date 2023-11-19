@@ -29,11 +29,12 @@ const KEYBOARD_INPUTS = [
 
 @onready
 var arena = $Level/Arena
+@onready
+var level = $Level
 
 
 func _ready():
 	var joypads = Input.get_connected_joypads()
-	var players = min(joypads.size() + 1, 4)
 	var turtles: Array = $Turtles.get_children()
 
 	for index in turtles.size():
