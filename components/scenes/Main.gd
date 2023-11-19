@@ -94,7 +94,7 @@ func _process(_delta):
 		for player in $Turtles.get_children():
 			if player._shell != null and player._shell.kind == Shell.Kind.GOLDEN:
 				main_ui.increase_player_points(player.id, 1)
-				if main_ui.get_player_points(player.id) == 60:
+				if main_ui.get_player_points(player.id) >= 60:
 					main_ui.show_victory(player.id)
 					$MainUI.process_mode = Node.PROCESS_MODE_ALWAYS
 					get_tree().current_scene.process_mode = Node.PROCESS_MODE_DISABLED

@@ -23,6 +23,10 @@ func set_number_of_players(n : int):
 func show_victory(player_number: int):
 	$Victory.text = "Player " + str(player_number + 1) + " won!!!"
 	$Victory.show()
+	get_tree().create_timer(3).timeout.connect(
+		func():
+			get_tree().change_scene_to_file("res://components/scenes/Menu.tscn")
+	)
 
 func increase_player_points(player_number : int, points : int):
 	if 0 <= player_number and player_number < MAX_NUMBER_OF_PLAYERS:
