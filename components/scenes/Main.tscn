@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ce04xtb7n005x"]
+[gd_scene load_steps=7 format=3 uid="uid://ce04xtb7n005x"]
 
 [ext_resource type="PackedScene" uid="uid://ctj5c77s4j3r6" path="res://components/character/Turtle.tscn" id="1_emo1l"]
 [ext_resource type="Script" path="res://components/scenes/Main.gd" id="1_s0jt8"]
 [ext_resource type="PackedScene" uid="uid://dhwiue3jupmtq" path="res://components/level/Arena.tscn" id="2_26d1a"]
 [ext_resource type="PackedScene" uid="uid://cf00sxbeqr0ve" path="res://components/pickups/ShellPickup.tscn" id="4_hui7w"]
 [ext_resource type="Environment" uid="uid://b4h5hv0btjinn" path="res://components/Environment.tres" id="4_wr6pt"]
+[ext_resource type="PackedScene" uid="uid://cr2w6ft2rv7hk" path="res://components/ui/MainUI.tscn" id="6_m71kf"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_s0jt8")
@@ -53,11 +54,21 @@ kind = 3
 environment = ExtResource("4_wr6pt")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Graphics"]
-transform = Transform3D(0.976706, -0.0996671, -0.190031, 0.214582, 0.453652, 0.864959, -3.99774e-09, -0.885588, 0.464471, 0, 38.076, 11.2076)
+transform = Transform3D(0.976706, -0.0996673, -0.190031, 0.2132, 0.350387, 0.912017, -0.0243137, -0.931287, 0.363474, 0, 34.076, 7.2076)
+light_energy = 1.5
 shadow_enabled = true
+shadow_opacity = 0.5
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Graphics"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0.01)
-light_energy = 16.0
+light_energy = 20.0
 spot_range = 177.681
 spot_angle = 10.76
+
+[node name="MainUI" parent="." instance=ExtResource("6_m71kf")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

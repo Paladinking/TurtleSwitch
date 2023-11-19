@@ -3,10 +3,9 @@
 [ext_resource type="Script" path="res://components/level/layouts/hazards/Ice.gd" id="1_5nh0k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_52a55"]
-albedo_color = Color(0.529412, 1, 1, 1)
-metallic = 0.2
-metallic_specular = 0.2
-roughness = 0.2
+albedo_color = Color(0.580392, 1, 0.937255, 1)
+metallic = 0.21
+roughness = 0.0
 refraction_scale = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_at7u4"]

@@ -77,22 +77,39 @@ func _process(_delta):
 		pass#$Graphics/SpotLight3D.look_at(golden_shell.global_position)
 
 
-func _unhandled_key_input(event):
-	if event.is_pressed() and event.keycode == KEY_ESCAPE:
-		get_tree().quit(0)
 
-	elif event.is_pressed() and event.keycode == KEY_I:
-#		print("Engaging layout")
-		arena.engage_layout("Pillars")
+var hazards_active = false
 
-	elif event.is_pressed() and event.keycode == KEY_O:
-#		print("Disengaging layout")
-		arena.disengage_layout("Pillars")
+func change_hazards():
+	if hazards_active:
+		$Level/Arena.disengage_layout("IceAndMud")
+	else:
+		$Level/Arena.engage_layout("IceAndMud")
+		
+	hazards_active = !hazards_active
 
-	elif event.is_pressed() and event.keycode == KEY_K:
-#		print("Engaging layout")
-		arena.engage_layout("IceAndMud")
 
-	elif event.is_pressed() and event.keycode == KEY_L:
-#		print("Disengaging layout")
-		arena.disengage_layout("IceAndMud")
+
+#func _unhandled_key_input(event):
+#	if event.is_pressed() and event.keycode == KEY_ESCAPE:
+#		get_tree().quit(0)
+#
+#	elif event.is_pressed() and event.keycode == KEY_I:
+##		print("Engaging layout")
+#		arena.engage_layout("HillAndPillars")
+#
+#	elif event.is_pressed() and event.keycode == KEY_O:
+##		print("Disengaging layout")
+#		arena.disengage_layout("HillAndPillars")
+#
+#	elif event.is_pressed() and event.keycode == KEY_K:
+##		print("Engaging layout")
+#		arena.engage_layout("IceAndMud")
+#
+#	elif event.is_pressed() and event.keycode == KEY_L:
+##		print("Disengaging layout")
+#		arena.disengage_layout("IceAndMud")
+
+
+func _on_timer_timeout():
+	change_hazards()

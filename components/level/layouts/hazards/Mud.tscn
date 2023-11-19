@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dye1hic7a3723"]
+[gd_scene load_steps=7 format=3 uid="uid://dye1hic7a3723"]
 
 [ext_resource type="Script" path="res://components/level/layouts/hazards/Mud.gd" id="1_dv7v4"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qumky"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q2y3t"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_qumky")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_divm4"]
-albedo_color = Color(0.270588, 0.180392, 0, 1)
+albedo_color = Color(0.368627, 0.215686, 0, 1)
+albedo_texture = SubResource("NoiseTexture2D_q2y3t")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_kefm7"]
 top_radius = 1.0
