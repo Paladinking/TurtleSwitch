@@ -46,21 +46,15 @@ func update_shell_visibility():
 			$ShellGolden.show()
 
 static func get_power(shell: Shell, is_dashing: bool):
-	var kind
-	if shell == null:
-		kind = Kind.NONE
-	else:
+	var kind = Kind.NONE
+	if shell != null:
 		kind = shell.kind
 	if is_dashing:
 		match kind:
-			Kind.NONE:
-				return 30
-			Kind.BASIC:
-				return 30
 			Kind.POWER:
-				return 100
-			Kind.GOLDEN:
-				return 30
+				return 40
+			_:
+				return 15
 	match kind:
 		Kind.NONE:
 			return 3
@@ -70,3 +64,36 @@ static func get_power(shell: Shell, is_dashing: bool):
 			return 10
 		Kind.GOLDEN:
 			return 2
+
+static func get_acceleration(shell: Shell):
+	var kind = Kind.NONE
+	if shell != null:
+		kind = shell.kind
+	match kind:
+		Kind.NONE:
+			return 3.0
+		Kind.BASIC:
+			return 4.0
+		Kind.POWER:
+			return 3.0
+		Kind.GOLDEN:
+			return 2.0
+
+static func get_dash_speed(shell: Shell):
+	var kind = Kind.NONE
+	if shell != null:
+		kind = shell.kind
+	match kind:
+		Kind.NONE:
+			return 9.0
+		Kind.BASIC:
+			return 13.0
+		Kind.POWER:
+			return 16.0
+		Kind.GOLDEN:
+			return 10.0
+
+static func get_action(shell: Shell):
+	if shell != null and shell.kind == Kind.BASIC:
+		return Turtle.Action.BASH
+	return Turtle.Action.DASH

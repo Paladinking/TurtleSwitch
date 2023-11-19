@@ -1,6 +1,6 @@
 @tool
 class_name ShellPickup
-extends Area3D
+extends RigidBody3D
 
 @export
 var kind: Shell.Kind:

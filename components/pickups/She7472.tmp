@@ -2,23 +2,30 @@
 
 [ext_resource type="Script" path="res://components/pickups/ShellPickup.gd" id="1_wefjo"]
 [ext_resource type="PackedScene" uid="uid://croclv6ieoj7g" path="res://components/shells/Shell.tscn" id="2_kxul7"]
-[ext_resource type="Script" path="res://components/pickups/ShellPickupArea.gd" id="3_ec44f"]
+
+[sub_resource type="GDScript" id="GDScript_dpcj8"]
+script/source = "class_name ShellPickupAreaL
+extends Area3D
+
+func get_pickup():
+	return get_parent()
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_05r1g"]
 size = Vector3(0.3, 0.3, 0.6)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_irka3"]
 
-[node name="ShellPickup" type="RigidBody3D"]
+[node name="ShellPickup" type="Area3D"]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_wefjo")
 
 [node name="Shell" parent="." instance=ExtResource("2_kxul7")]
 kind = 0
 
 [node name="Area3D" type="Area3D" parent="."]
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("3_ec44f")
+script = SubResource("GDScript_dpcj8")
 
 [node name="CollisionShape0" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.601064, 0, 0)
