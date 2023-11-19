@@ -157,7 +157,6 @@ func _physics_process(delta):
 					body.turtle_collision(15, diff)
 				if body is ShellPickup:
 					var vec = (body.global_position - global_position).normalized()
-					print(vec)
 					body.apply_force(200 * vec)
 
 	elif _stun_cooldown.is_done():
@@ -199,7 +198,7 @@ func _physics_process(delta):
 				animator.play("ArmatureAction")
 		else:
 			animator.pause()
-	
+			
 	velocity += _collision_acceleration
 	_collision_acceleration *= 0.9
 	var collision_info = move_and_collide(velocity * delta, true)
@@ -214,7 +213,9 @@ func _physics_process(delta):
 				collider.apply_force(10 * velocity.length() * dir)
 			elif abs(dir.y) < 0.1 and velocity.length_squared() > 120:
 				var norm = collision_info.get_normal(i)
+				var old_y = velocity.y
 				velocity = velocity.bounce(norm)
+				velocity.y = old_y
 				_action_direction = _action_direction.bounce(norm)
 				rotation.y = -atan2(velocity.z, velocity.x)
 	_was_on_floor = is_on_floor()

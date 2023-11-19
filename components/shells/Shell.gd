@@ -52,7 +52,7 @@ static func get_power(shell: Shell, is_dashing: bool):
 	if is_dashing:
 		match kind:
 			Kind.POWER:
-				return 40
+				return 25
 			_:
 				return 15
 	match kind:
