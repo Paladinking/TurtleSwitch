@@ -5,14 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://dhwiue3jupmtq" path="res://components/level/Arena.tscn" id="2_26d1a"]
 [ext_resource type="PackedScene" uid="uid://cf00sxbeqr0ve" path="res://components/pickups/ShellPickup.tscn" id="4_hui7w"]
 [ext_resource type="Environment" uid="uid://b4h5hv0btjinn" path="res://components/Environment.tres" id="4_wr6pt"]
-[ext_resource type="PackedScene" uid="uid://cr2w6ft2rv7hk" path="res://components/ui/MainUI.tscn" id="6_m71kf"]
+[ext_resource type="PackedScene" uid="uid://cr2w6ft2rv7hk" path="res://components/ui/MainUI.tscn" id="6_tahng"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_s0jt8")
 metadata/Players = [NodePath("Turtles/Turtle1"), NodePath("Turtles/Turtle2"), NodePath("Turtles/Turtle3"), NodePath("Turtles/Turtle4")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.309017, 0.951057, 0, -0.951057, 0.309017, 0, 52, 16)
+transform = Transform3D(1, 0, 0, 0, 0.31207, 0.950059, 0, -0.950059, 0.31207, 0, 49.5661, 17.8446)
 environment = ExtResource("4_wr6pt")
 current = true
 fov = 25.0
@@ -33,27 +33,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0.172, -8)
 
 [node name="Level" type="Node" parent="."]
 
-[node name="BashShell" parent="Level" instance=ExtResource("4_hui7w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8112, 0.569638, 1.88556)
-collision_layer = 1
-kind = 2
-
 [node name="Arena" parent="Level" instance=ExtResource("2_26d1a")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="DashShell" parent="Level" instance=ExtResource("4_hui7w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.24655, 0.284819, -2.80287)
-collision_layer = 1
-kind = 4
+[node name="PowerShell" parent="Level" instance=ExtResource("4_hui7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9056, 0.284819, 3.16177)
+kind = 2
 
 [node name="GoldenShell" parent="Level" instance=ExtResource("4_hui7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27022, 0)
-collision_layer = 1
 kind = 1
 
 [node name="ShellPower" parent="Level" instance=ExtResource("4_hui7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14128, 3.22212, -5.22859)
-collision_layer = 1
 kind = 3
 
 [node name="Graphics" type="Node" parent="."]
@@ -62,21 +54,13 @@ kind = 3
 environment = ExtResource("4_wr6pt")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Graphics"]
-transform = Transform3D(0.976706, -0.0996673, -0.190031, 0.2132, 0.350387, 0.912017, -0.0243137, -0.931287, 0.363474, 0, 34.076, 7.2076)
-light_energy = 1.5
+transform = Transform3D(0.976706, -0.0996671, -0.190031, 0.214582, 0.453652, 0.864959, -3.99774e-09, -0.885588, 0.464471, 0, 38.076, 11.2076)
 shadow_enabled = true
-shadow_opacity = 0.5
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Graphics"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0.01)
-light_energy = 20.0
+light_energy = 16.0
 spot_range = 177.681
 spot_angle = 10.76
 
-[node name="MainUI" parent="." instance=ExtResource("6_m71kf")]
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 30.0
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="MainUI" parent="." instance=ExtResource("6_tahng")]
