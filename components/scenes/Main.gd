@@ -1,6 +1,6 @@
 extends Node3D
 
-const INPUT_NAMES = ["left", "right", "up", "down", "action"]
+const INPUT_NAMES = ["left", "right", "up", "down", "action", "jump"]
 
 @onready
 var golden_shell: Shell = $Level/GoldenShell/Shell
@@ -14,6 +14,7 @@ const JOY_AXIS_INPUTS = [
 	[[JOY_AXIS_LEFT_X, 1.0]],
 	[[JOY_AXIS_LEFT_Y, -1.0]],
 	[[JOY_AXIS_LEFT_Y, 1.0]],
+	[],
 	[]
 ]
 
@@ -22,7 +23,8 @@ const JOY_BUTTON_INPUTS = [
 	[JOY_BUTTON_DPAD_RIGHT],
 	[JOY_BUTTON_DPAD_UP],
 	[JOY_BUTTON_DPAD_DOWN],
-	[JOY_BUTTON_A],
+	[JOY_BUTTON_X],
+	[JOY_BUTTON_A]
 ]
 
 const KEYBOARD_INPUTS = [
@@ -30,7 +32,8 @@ const KEYBOARD_INPUTS = [
 	[KEY_RIGHT, KEY_D],
 	[KEY_UP, KEY_W],
 	[KEY_DOWN, KEY_S],
-	[KEY_SPACE],
+	[KEY_E],
+	[KEY_SPACE]
 ]
 
 
