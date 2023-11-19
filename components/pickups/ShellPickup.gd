@@ -21,6 +21,5 @@ func update_shell_kind(kind: Shell.Kind):
 var shell: Shell = $Shell
 
 func pick_up() -> Shell:
-	remove_child(shell)
 	queue_free()
 	return shell
