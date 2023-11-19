@@ -12,10 +12,6 @@ enum Kind {
 @onready
 var shells = [$ShellBasic, $ShellPower, $PowerShell, $ShellGolden]
 
-@export_range(1, 100) var sclae: float:
-	set(v):
-		$Model.scale = Vector3(v, v, v)
-
 @export
 var kind: Kind:
 	set(new_kind):
@@ -48,3 +44,59 @@ func update_shell_visibility():
 			$PowerShell.show()
 		Kind.GOLDEN:
 			$ShellGolden.show()
+
+static func get_power(shell: Shell, is_dashing: bool):
+	var kind = Kind.NONE
+	if shell != null:
+		kind = shell.kind
+	if is_dashing:
+		match kind:
+			Kind.POWER:
+				return 40
+			_:
+				return 15
+	match kind:
+		Kind.NONE:
+			return 3
+		Kind.BASIC:
+			return 5
+		Kind.POWER:
+			return 10
+		Kind.GOLDEN:
+			return 2
+
+static func get_acceleration(shell: Shell):
+	var kind = Kind.NONE
+	if shell != null:
+		kind = shell.kind
+	match kind:
+		Kind.NONE:
+			return 3.0
+		Kind.BASIC:
+			return 4.0
+		Kind.POWER:
+			return 3.0
+		Kind.GOLDEN:
+			return 2.0
+
+static func get_dash_speed(shell: Shell):
+	var kind = Kind.NONE
+	if shell != null:
+		kind = shell.kind
+	match kind:
+		Kind.NONE:
+			return 9.0
+		Kind.BASIC:
+			return 13.0
+		Kind.POWER:
+			return 16.0
+		Kind.GOLDEN:
+			return 10.0
+
+static func get_action(shell: Shell):
+	if shell != null and shell.kind == Kind.BASIC:
+		return Turtle.Action.BASH
+	return Turtle.Action.DASH
+
+static func get_hp(shell: Shell):
+	return 20

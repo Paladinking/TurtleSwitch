@@ -2,11 +2,15 @@ extends Node3D
 
 const INPUT_NAMES = ["left", "right", "up", "down", "action"]
 
+@onready
+var golden_shell: Shell = $Level/GoldenShell/Shell
+
 const JOY_AXIS_INPUTS = [
 	[[JOY_AXIS_LEFT_X, -1.0]],
 	[[JOY_AXIS_LEFT_X, 1.0]],
 	[[JOY_AXIS_LEFT_Y, -1.0]],
 	[[JOY_AXIS_LEFT_Y, 1.0]],
+	[]
 ]
 
 const JOY_BUTTON_INPUTS = [
@@ -27,12 +31,13 @@ const KEYBOARD_INPUTS = [
 
 
 @onready
-var arena: Arena = $Level/Arena
+var arena = $Level/Arena
+@onready
+var level = $Level
 
 
 func _ready():
 	var joypads = Input.get_connected_joypads()
-	var players = min(joypads.size() + 1, 4)
 	var turtles: Array = $Turtles.get_children()
 
 	for index in turtles.size():
@@ -65,6 +70,11 @@ func _ready():
 				player.queue_free()
 
 		player.set_input(index)
+
+
+func _process(_delta):
+	if is_instance_valid(golden_shell):
+		$Graphics/SpotLight3D.look_at(golden_shell.global_position)
 
 
 func _unhandled_key_input(event):

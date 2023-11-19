@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctj5c77s4j3r6"]
+[gd_scene load_steps=5 format=3 uid="uid://ctj5c77s4j3r6"]
 
 [ext_resource type="Script" path="res://components/character/Turtle.gd" id="1_0jj88"]
 [ext_resource type="PackedScene" uid="uid://bxr0h4a2f43ix" path="res://res/models/character/padda_v5.glb" id="2_sc3kw"]
@@ -7,10 +7,6 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mn71o"]
 radius = 0.396602
 height = 1.4366
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1eb1v"]
-height = 1.0
-radius = 3.304
 
 [node name="Turtle" type="CharacterBody3D"]
 script = ExtResource("1_0jj88")
@@ -21,13 +17,8 @@ script = ExtResource("1_0jj88")
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.17288, 0.0463192, 0)
 shape = SubResource("CapsuleShape3D_mn71o")
 
-[node name="StunCooldown" parent="." instance=ExtResource("3_rtjes")]
-cooldown = 3.0
-
-[node name="BashCooldown" parent="." instance=ExtResource("3_rtjes")]
-cooldown = 2.0
-
 [node name="DashCooldown" parent="." instance=ExtResource("3_rtjes")]
+cooldown = 3.0
 
 [node name="PickupDetector" type="Area3D" parent="."]
 collision_layer = 0
@@ -36,8 +27,3 @@ collision_mask = 2
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="PickupDetector"]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.151849, 0.0463192, 0)
 shape = SubResource("CapsuleShape3D_mn71o")
-
-[node name="BashArea" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BashArea"]
-shape = SubResource("CylinderShape3D_1eb1v")

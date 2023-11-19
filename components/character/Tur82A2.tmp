@@ -21,9 +21,6 @@ script = ExtResource("1_0jj88")
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.17288, 0.0463192, 0)
 shape = SubResource("CapsuleShape3D_mn71o")
 
-[node name="StunCooldown" parent="." instance=ExtResource("3_rtjes")]
-cooldown = 3.0
-
 [node name="BashCooldown" parent="." instance=ExtResource("3_rtjes")]
 cooldown = 2.0
 

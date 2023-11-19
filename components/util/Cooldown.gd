@@ -26,3 +26,13 @@ func use_cooldown() -> bool:
 	_time_left = cooldown
 
 	return true
+
+func reset():
+	_time_left = cooldown
+
+func is_done() -> bool:
+	return _time_left == 0
+
+func set_duration(time: float):
+	_time_left = time
+	cooldown = time

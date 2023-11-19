@@ -35,13 +35,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0.172, -8)
 [node name="Arena" parent="Level" instance=ExtResource("2_26d1a")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="GoldenShell" parent="Level" instance=ExtResource("4_hui7w")]
+[node name="PowerShell" parent="Level" instance=ExtResource("4_hui7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9056, 0.284819, 3.16177)
+kind = 2
+
+[node name="GoldenShell" parent="Level" instance=ExtResource("4_hui7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27022, 0)
 kind = 1
 
-[node name="PowerShell" parent="Level" instance=ExtResource("4_hui7w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27022, 0)
-kind = 2
+[node name="ShellPower" parent="Level" instance=ExtResource("4_hui7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14128, 3.22212, -5.22859)
+kind = 3
 
 [node name="Graphics" type="Node" parent="."]
 
@@ -51,3 +55,9 @@ environment = ExtResource("4_wr6pt")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Graphics"]
 transform = Transform3D(0.976706, -0.0996671, -0.190031, 0.214582, 0.453652, 0.864959, -3.99774e-09, -0.885588, 0.464471, 0, 38.076, 11.2076)
 shadow_enabled = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+light_energy = 16.0
+spot_range = 177.681
+spot_angle = 10.76
