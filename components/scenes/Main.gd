@@ -73,11 +73,11 @@ func _unhandled_key_input(event):
 
 	elif event.is_pressed() and event.keycode == KEY_I:
 #		print("Engaging layout")
-		arena.engage_layout("HillAndPillars")
+		arena.engage_layout("Pillars")
 
 	elif event.is_pressed() and event.keycode == KEY_O:
 #		print("Disengaging layout")
-		arena.disengage_layout("HillAndPillars")
+		arena.disengage_layout("Pillars")
 
 	elif event.is_pressed() and event.keycode == KEY_K:
 #		print("Engaging layout")

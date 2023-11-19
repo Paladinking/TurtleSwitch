@@ -9,7 +9,7 @@ var size: float = 1:
 
 
 # !DO NOT! make multiple Ice sheets overlap, exiting one will remove on_ice
-# even if they are still on another
+# even if they are still on anothe
 
 
 func _ready():
@@ -28,3 +28,4 @@ func _ready():
 			if (body is Turtle):
 				body.on_ice = false
 	)
+	

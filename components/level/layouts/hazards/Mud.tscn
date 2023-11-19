@@ -6,13 +6,13 @@
 albedo_color = Color(0.270588, 0.180392, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_kefm7"]
-top_radius = 4.0
-bottom_radius = 4.0
+top_radius = 1.0
+bottom_radius = 1.0
 height = 0.1
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6d3fl"]
 height = 1.0
-radius = 4.0
+radius = 1.0
 
 [node name="Mud" type="Node3D"]
 script = ExtResource("1_dv7v4")
