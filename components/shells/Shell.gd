@@ -26,9 +26,9 @@ const ShellScene = preload("res://components/shells/Shell.tscn")
 func _ready():
 	update_shell_visibility()
 
-static func from_kind(kind: Kind):
+static func from_kind(k : Kind):
 	var scene = ShellScene.instantiate()
-	scene.kind = kind
+	scene.kind = k
 	return scene
 
 func update_shell_visibility():
