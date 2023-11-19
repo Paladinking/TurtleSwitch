@@ -43,6 +43,10 @@ kind = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27022, 0)
 kind = 2
 
+[node name="ShellPower" parent="Level" instance=ExtResource("4_hui7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14128, 3.22212, -5.22859)
+kind = 3
+
 [node name="Graphics" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Graphics"]
