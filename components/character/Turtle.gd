@@ -29,8 +29,12 @@ var _shell: Shell = null:
 	set(new_shell):
 		if _shell != null:
 			_shell.queue_free()
+
 		if new_shell != null:
-			add_child(new_shell)
+			new_shell.reparent(self)
+			new_shell.position = Vector3(0, 0, 0)
+			new_shell.rotation = Vector3(0, 0, 0)
+
 		_shell = new_shell
 var _shell_hp: int = 0
 

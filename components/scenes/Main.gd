@@ -2,6 +2,9 @@ extends Node3D
 
 const INPUT_NAMES = ["left", "right", "up", "down", "action"]
 
+@onready
+var golden_shell: Shell = $Level/GoldenShell/Shell
+
 const JOY_AXIS_INPUTS = [
 	[[JOY_AXIS_LEFT_X, -1.0]],
 	[[JOY_AXIS_LEFT_X, 1.0]],
@@ -67,6 +70,11 @@ func _ready():
 				player.queue_free()
 
 		player.set_input(index)
+
+
+func _process(_delta):
+	if is_instance_valid(golden_shell):
+		$Graphics/SpotLight3D.look_at(golden_shell.global_position)
 
 
 func _unhandled_key_input(event):

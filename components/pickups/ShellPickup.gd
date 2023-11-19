@@ -32,6 +32,5 @@ var shell: Shell = $Shell
 var pickup_delay = 1.0
 
 func pick_up() -> Shell:
-	remove_child(shell)
 	queue_free()
 	return shell
