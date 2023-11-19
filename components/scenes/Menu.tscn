@@ -69,14 +69,17 @@ visible = false
 
 [node name="PowerShell" parent="Node3D/Level" instance=ExtResource("7_8d34v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9056, 0.284819, 3.16177)
+collision_layer = 1
 kind = 2
 
 [node name="GoldenShell" parent="Node3D/Level" instance=ExtResource("7_8d34v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27022, 0)
+collision_layer = 1
 kind = 1
 
 [node name="ShellPower" parent="Node3D/Level" instance=ExtResource("7_8d34v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14128, 3.22212, -5.22859)
+collision_layer = 1
 kind = 3
 
 [node name="Graphics" type="Node" parent="Node3D"]

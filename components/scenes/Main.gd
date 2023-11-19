@@ -117,7 +117,7 @@ func change_hazards():
 	hazards_active = !hazards_active
 	
 func change_layout(l):
-	if l == 1:
+	if l % 2 == 1:
 		$Level/Arena.disengage_layout("PillAndHillars")
 		$Level/Arena.engage_layout("HillAndPillars")
 	else:

@@ -194,7 +194,7 @@ func _physics_process(delta):
 						if body is Turtle and body != self:
 							var diff = body.position - position
 							diff.y = 0
-							body.turtle_collision(15, diff)
+							body.turtle_collision(50, diff)
 						if body is ShellPickup:
 							var vec = (body.global_position - global_position).normalized()
 							body.apply_force(200 * vec)
