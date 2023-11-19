@@ -44,3 +44,29 @@ func update_shell_visibility():
 			$PowerShell.show()
 		Kind.GOLDEN:
 			$ShellGolden.show()
+
+static func get_power(shell: Shell, is_dashing: bool):
+	var kind
+	if shell == null:
+		kind = Kind.NONE
+	else:
+		kind = shell.kind
+	if is_dashing:
+		match kind:
+			Kind.NONE:
+				return 30
+			Kind.BASIC:
+				return 30
+			Kind.POWER:
+				return 100
+			Kind.GOLDEN:
+				return 30
+	match kind:
+		Kind.NONE:
+			return 3
+		Kind.BASIC:
+			return 5
+		Kind.POWER:
+			return 10
+		Kind.GOLDEN:
+			return 2

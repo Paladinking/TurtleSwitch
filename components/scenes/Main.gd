@@ -7,6 +7,7 @@ const JOY_AXIS_INPUTS = [
 	[[JOY_AXIS_LEFT_X, 1.0]],
 	[[JOY_AXIS_LEFT_Y, -1.0]],
 	[[JOY_AXIS_LEFT_Y, 1.0]],
+	[]
 ]
 
 const JOY_BUTTON_INPUTS = [
@@ -27,7 +28,7 @@ const KEYBOARD_INPUTS = [
 
 
 @onready
-var arena: Arena = $Level/Arena
+var arena = $Level/Arena
 
 
 func _ready():
