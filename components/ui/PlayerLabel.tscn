@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqgctrquixyb"]
+
+[ext_resource type="LabelSettings" uid="uid://ckbmdoucps6ug" path="res://res/ui_themes/PlayerLabel.tres" id="1_2qx6h"]
+[ext_resource type="Script" path="res://components/ui/PlayerLabel.gd" id="2_wtnt6"]
+
+[node name="PlayerLabel" type="Label"]
+anchors_preset = -1
+anchor_right = 0.156
+anchor_bottom = 0.084
+offset_right = -0.52002
+offset_bottom = 0.279991
+text = " Player 1: "
+label_settings = ExtResource("1_2qx6h")
+script = ExtResource("2_wtnt6")
+
+[node name="PointsLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.134
+anchor_top = 1.099
+anchor_right = 1.0
+anchor_bottom = 2.099
+offset_left = -0.0660019
+offset_top = -0.00901031
+offset_right = -25.0
+offset_bottom = -0.00901794
+text = "(points)"
+label_settings = ExtResource("1_2qx6h")

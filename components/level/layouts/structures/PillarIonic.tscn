@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwackbctssk8e"]
+
+[ext_resource type="PackedScene" uid="uid://dcb3i66vu1xq6" path="res://res/models/structures/structure_ColumnIonic.glb" id="1_y8h8s"]
+[ext_resource type="PackedScene" uid="uid://bb1u04pwpl1y1" path="res://res/models/structures/structure_JordHog.glb" id="2_gcu5w"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ke131"]
+height = 4.55924
+radius = 0.457471
+
+[node name="PillarIonic" type="Node3D"]
+
+[node name="structure_ColumnIonic" parent="." instance=ExtResource("1_y8h8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.41939, 1.17757, -4.11593)
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="structure_ColumnIonic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.50789, 1.19381, 4.09285)
+shape = SubResource("CylinderShape3D_ke131")
+
+[node name="structure_JordHog" parent="." instance=ExtResource("2_gcu5w")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.25001, 1.33568, 0.777565)

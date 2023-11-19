@@ -1,58 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://bf40k4oc28qf3"]
+[gd_scene load_steps=3 format=3 uid="uid://bf40k4oc28qf3"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2oorr"]
-height = 4.0
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_1b8p3"]
-height = 4.0
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ndcbi"]
-height = 3.5
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ijodq"]
-height = 3.5
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_n17u8"]
-height = 4.0
-radius = 0.4
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_leuei"]
-top_radius = 0.3
-bottom_radius = 0.4
-height = 4.0
+[ext_resource type="PackedScene" uid="uid://bwackbctssk8e" path="res://components/level/layouts/structures/PillarIonic.tscn" id="1_12tf0"]
+[ext_resource type="PackedScene" uid="uid://cbgb4ggngsgmy" path="res://components/level/layouts/structures/PillarTuscan.tscn" id="2_vpa4t"]
 
 [node name="Arch" type="Node3D"]
 
-[node name="PillarRight" type="AnimatableBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
-sync_to_physics = false
+[node name="PillarIonic" parent="." instance=ExtResource("1_12tf0")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 2.39045)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PillarRight"]
-shape = SubResource("CapsuleShape3D_2oorr")
+[node name="PillarIonic2" parent="." instance=ExtResource("1_12tf0")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, -1.97602)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PillarRight"]
-mesh = SubResource("CapsuleMesh_1b8p3")
-skeleton = NodePath("../..")
+[node name="PillarTuscan" parent="." instance=ExtResource("2_vpa4t")]
+transform = Transform3D(1, -4.04543e-08, 1.49011e-08, 1.89325e-08, 0.433663, -0.976209, 1.65149e-08, 1.95242, 0.216831, 0, 3.14393, -2.15126)
 
-[node name="PillarLeft" type="AnimatableBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
-sync_to_physics = false
+[node name="structure_JordHog" parent="PillarTuscan" index="1"]
+transform = Transform3D(1, 4.79825e-14, 0, -4.79825e-14, 1, 0, 0, 0, 1, -0.829413, 0.878134, 0.546757)
+visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PillarLeft"]
-shape = SubResource("CapsuleShape3D_ndcbi")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PillarLeft"]
-mesh = SubResource("CapsuleMesh_ijodq")
-skeleton = NodePath("../..")
-
-[node name="TopPillar" type="AnimatableBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.155952, -0.987765, 0, 0.987765, 0.155952, 0, 2.19362, 0.0740347)
-sync_to_physics = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TopPillar"]
-shape = SubResource("CylinderShape3D_n17u8")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TopPillar"]
-transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_leuei")
-skeleton = NodePath("../..")
+[editable path="PillarTuscan"]

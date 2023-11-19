@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbgb4ggngsgmy"]
+
+[ext_resource type="PackedScene" uid="uid://dkrh436u5fjj2" path="res://res/models/structures/structure_ColumnTuscan.glb" id="1_dvmho"]
+[ext_resource type="PackedScene" uid="uid://bb1u04pwpl1y1" path="res://res/models/structures/structure_JordHog.glb" id="2_7yw1m"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5wuym"]
+height = 2.31956
+radius = 0.25
+
+[node name="PillarTuscan" type="Node3D"]
+transform = Transform3D(1, -1.84809e-08, 1.49012e-08, 2.02272e-08, 1, -1.39698e-09, -1.49012e-08, 6.98492e-09, 1, 0, 0, 0)
+
+[node name="structure_ColumnTuscan" parent="." instance=ExtResource("1_dvmho")]
+sync_to_physics = false
+
+[node name="PillarTuscan" type="CollisionShape3D" parent="structure_ColumnTuscan"]
+transform = Transform3D(1, -1.04083e-16, 0, -1.77844e-14, 1, -1.11022e-15, 0, 0, 1, 2.14201e-08, 1.15904, -8.09578e-09)
+shape = SubResource("CylinderShape3D_5wuym")
+
+[node name="structure_JordHog" parent="." instance=ExtResource("2_7yw1m")]
+transform = Transform3D(1, -1.04083e-16, 0, -4.79825e-14, 1, -2.9976e-15, 0, 0, 1, -0.829413, 0.878134, 0.546757)
