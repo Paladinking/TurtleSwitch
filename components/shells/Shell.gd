@@ -7,6 +7,7 @@ enum Kind {
 	GOLDEN,
 	BASIC,
 	POWER,
+	DASHER
 }
 
 @onready
@@ -44,6 +45,15 @@ func update_shell_visibility():
 			$PowerShell.show()
 		Kind.GOLDEN:
 			$ShellGolden.show()
+		Kind.DASHER:
+			$ShellPower.show()
+
+static func get_dash_time(shell: Shell):
+	if shell == null:
+		return 0.1
+	if shell.kind == Kind.DASHER:
+		return 0.5
+	return 0.2
 
 static func get_power(shell: Shell, is_dashing: bool):
 	var kind = Kind.NONE
@@ -51,6 +61,8 @@ static func get_power(shell: Shell, is_dashing: bool):
 		kind = shell.kind
 	if is_dashing:
 		match kind:
+			Kind.DASHER:
+				return 30
 			Kind.POWER:
 				return 25
 			_:
@@ -64,6 +76,8 @@ static func get_power(shell: Shell, is_dashing: bool):
 			return 10
 		Kind.GOLDEN:
 			return 2
+		Kind.DASHER:
+			return 12
 
 static func has_bash(shell: Shell):
 	return shell != null and shell.kind == Kind.BASIC
@@ -74,13 +88,15 @@ static func get_acceleration(shell: Shell):
 		kind = shell.kind
 	match kind:
 		Kind.NONE:
-			return 3.0
+			return 0.4
 		Kind.BASIC:
 			return 4.0
 		Kind.POWER:
-			return 3.0
+			return 0.0
 		Kind.GOLDEN:
 			return 0.5
+		Kind.DASHER:
+			return 0.0
 
 static func get_dash_speed(shell: Shell):
 	var kind = Kind.NONE
@@ -95,6 +111,8 @@ static func get_dash_speed(shell: Shell):
 			return 16.0
 		Kind.GOLDEN:
 			return 10.0
+		Kind.DASHER:
+			return 22.0
 
 static func get_action(shell: Shell):
 	if shell != null and shell.kind == Kind.BASIC:
