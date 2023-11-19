@@ -4,12 +4,13 @@ extends Node3D
 
 enum Kind {
 	NONE,
+	GOLDEN,
 	BASIC,
 	POWER,
 }
 
 @onready
-var shells = [$ShellBasic, $ShellPower, $PowerShell]
+var shells = [$ShellBasic, $ShellPower, $PowerShell, $ShellGolden]
 
 @export_range(1, 100) var sclae: float:
 	set(v):
@@ -45,3 +46,5 @@ func update_shell_visibility():
 			$ShellBasic.show()
 		Kind.POWER:
 			$PowerShell.show()
+		Kind.GOLDEN:
+			$ShellGolden.show()
