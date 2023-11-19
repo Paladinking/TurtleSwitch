@@ -88,7 +88,6 @@ func _ready():
 	)
 	_stun_cooldown.on_cooldown_begin.connect(
 		func():
-			print("cooldown begin")
 			$stars.show()
 			$stars/AnimationPlayer.play("stjarnor")
 	)
@@ -96,6 +95,11 @@ func _ready():
 		func(_anim):
 			$stars.hide()
 	)
+	$shockwave/AnimationPlayer.animation_finished.connect(
+	func(_anim):
+		$shockwave.hide()
+	)
+	$shockwave.hide()
 	$stars.hide()
 
 func set_input(index):
@@ -183,6 +187,8 @@ func _physics_process(delta):
 			if !_was_on_floor and is_on_floor() and _action == Action.BASH:
 				_action = Action.NONE
 				if Shell.has_bash(_shell):
+					$shockwave.show()
+					$shockwave/AnimationPlayer.play("Action")
 					for body in _bash_area.get_overlapping_bodies():
 						if body is Turtle and body != self:
 							var diff = body.position - position

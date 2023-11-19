@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctj5c77s4j3r6"]
+[gd_scene load_steps=9 format=3 uid="uid://ctj5c77s4j3r6"]
 
 [ext_resource type="Script" path="res://components/character/Turtle.gd" id="1_0jj88"]
 [ext_resource type="PackedScene" uid="uid://clevv8b6dlo4" path="res://res/models/character/padda_v9.glb" id="3_38j8f"]
 [ext_resource type="Script" path="res://components/util/Cooldown.gd" id="3_b2hou"]
 [ext_resource type="PackedScene" uid="uid://d4jxhm4x1xv5m" path="res://components/util/Cooldown.tscn" id="3_rtjes"]
 [ext_resource type="PackedScene" uid="uid://bu4fpvct6180d" path="res://components/character/stars.tscn" id="4_mg5ql"]
+[ext_resource type="PackedScene" uid="uid://dk3qn5uohl1f2" path="res://res/models/shockwave.glb" id="6_0hibf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mn71o"]
 radius = 0.396602
@@ -49,3 +50,10 @@ shape = SubResource("CylinderShape3D_1eb1v")
 [node name="Model" parent="." instance=ExtResource("3_38j8f")]
 
 [node name="stars" parent="." instance=ExtResource("4_mg5ql")]
+
+[node name="shockwave" parent="." instance=ExtResource("6_0hibf")]
+
+[node name="Circle" parent="shockwave" index="0"]
+transform = Transform3D(1.48679, 0, 0, 0, 0.444676, 0, 0, 0, 1.48679, 0, -0.370464, 0)
+
+[editable path="shockwave"]
