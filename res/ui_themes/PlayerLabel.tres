@@ -1,6 +1,9 @@
-[gd_resource type="LabelSettings" format=3 uid="uid://ckbmdoucps6ug"]
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://ckbmdoucps6ug"]
+
+[ext_resource type="FontFile" uid="uid://bubrskj40egua" path="res://res/ui_themes/sitka-3-style-font/sitka-small-599.ttf" id="1_ff1u7"]
 
 [resource]
+font = ExtResource("1_ff1u7")
 font_size = 64
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
