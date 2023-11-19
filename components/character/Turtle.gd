@@ -48,8 +48,9 @@ func _ready():
 	_bash_area = $BashArea
 	$PickupDetector.area_entered.connect(
 		func(area: Area3D):
-			if area is ShellPickup:
-				_shell = area.pick_up()
+			if area is ShellPickupArea:
+				_shell = area.get_pickup().pick_up()
+				
 	)
 
 	$Model/AnimationPlayer.get_animation("ArmatureAction").loop_mode = Animation.LOOP_LINEAR
