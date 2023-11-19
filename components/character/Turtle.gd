@@ -8,6 +8,7 @@ const FRICTION = 0.04
 const DASH_SPEED = 14.0
 const DASH_TIME = 0.2
 const MAX_ROTATION = PI / 16
+const MIN_SPEED_FOR_ANIMATION = 5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -41,7 +42,6 @@ func _ready():
 	)
 
 	$Model/AnimationPlayer.get_animation("ArmatureAction").loop_mode = Animation.LOOP_LINEAR
-	$Model/AnimationPlayer.play("ArmatureAction")
 
 
 func set_input(index):
@@ -80,6 +80,11 @@ func _physics_process(delta):
 
 		velocity.x = _dash_direction.x * DASH_SPEED * factor
 		velocity.z = _dash_direction.z * DASH_SPEED * factor
+		
+		var animator = $Model/AnimationPlayer
+		if animator.is_playing():
+			animator.pause()
+
 	else:
 		var input_dir = Input.get_vector(left_input, right_input, up_input, down_input)
 
@@ -112,6 +117,13 @@ func _physics_process(delta):
 			velocity.x = velocity.x / length * MAX_VELOCITY
 			velocity.z = velocity.z / length * MAX_VELOCITY
 		velocity.y = old_y
+		
+		var animator = $Model/AnimationPlayer
+		if velocity.length_squared() > MIN_SPEED_FOR_ANIMATION:
+			if not animator.is_playing():
+				animator.play("ArmatureAction")
+		else:
+			animator.pause()
 	
 	velocity += _collision_acceleration
 	_collision_acceleration *= 0.9
@@ -124,7 +136,7 @@ func _physics_process(delta):
 				collider.turtle_collision(power, -collision_info.get_normal(i))
 			elif collider is ShellPickup:
 				collider.apply_force(10 * velocity.length() * -collision_info.get_normal(i))
-			elif abs(collision_info.get_normal(i).y) < 0.1:
+			elif abs(collision_info.get_normal(i).y) < 0.1 and velocity.length_squared() > 100:
 				velocity = -velocity * 0.8
 				_dash_direction = -_dash_direction
 				rotate_y(PI)

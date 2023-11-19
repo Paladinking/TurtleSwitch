@@ -6,15 +6,17 @@
 [node name="IceAndMud" type="Node3D"]
 
 [node name="Ice" parent="." instance=ExtResource("1_eusmh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.18657, 0, -7.56213)
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, -4.18657, 0, -7.56213)
+size = 6.0
 
 [node name="Mud" parent="." instance=ExtResource("2_hvpfc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.54408, 0, -5.33481)
-radius = 4.0
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 4.54408, 0, -5.33481)
+size = 3.0
 
 [node name="Ice2" parent="." instance=ExtResource("1_eusmh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92098, 0, 7.43238)
+transform = Transform3D(4.4, 0, 0, 0, 1, 0, 0, 0, 4.4, 4.92098, 0, 7.43238)
+size = 4.4
 
 [node name="Mud2" parent="." instance=ExtResource("2_hvpfc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.18997, 0, 4.73316)
-radius = 4.0
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, -6.18997, 0, 4.73316)
+size = 5.0

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://croclv6ieoj7g"]
+[gd_scene load_steps=7 format=3 uid="uid://croclv6ieoj7g"]
 
 [ext_resource type="Script" path="res://components/shells/Shell.gd" id="1_dfg5k"]
 [ext_resource type="PackedScene" uid="uid://dgnog26ow34f" path="res://components/models/ShellBasic.tscn" id="2_xbqe2"]
 [ext_resource type="PackedScene" uid="uid://cmi6m7r2vpisd" path="res://components/models/ShellPower.tscn" id="3_pprgn"]
 [ext_resource type="PackedScene" uid="uid://ouxl1aoqh5um" path="res://components/models/PowerShell.tscn" id="4_v5vfe"]
+[ext_resource type="PackedScene" path="res://components/models/ShellGolden.tscn" id="5_deptp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lmne2"]
 
@@ -16,9 +17,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138162, 0)
 shape = SubResource("SphereShape3D_lmne2")
 
 [node name="ShellBasic" parent="." instance=ExtResource("2_xbqe2")]
+visible = false
 
 [node name="ShellPower" parent="." instance=ExtResource("3_pprgn")]
 visible = false
 
 [node name="PowerShell" parent="." instance=ExtResource("4_v5vfe")]
+visible = false
+
+[node name="ShellGolden" parent="." instance=ExtResource("5_deptp")]
 visible = false

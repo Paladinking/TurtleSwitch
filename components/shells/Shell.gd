@@ -4,12 +4,13 @@ extends Node3D
 
 enum Kind {
 	NONE,
+	GOLDEN,
 	BASIC,
 	POWER,
 }
 
 @onready
-var shells = [$ShellBasic, $ShellPower, $PowerShell]
+var shells = [$ShellBasic, $ShellPower, $PowerShell, $ShellGolden]
 
 @export_range(1, 100) var sclae: float:
 	set(v):
@@ -26,9 +27,9 @@ const ShellScene = preload("res://components/shells/Shell.tscn")
 func _ready():
 	update_shell_visibility()
 
-static func from_kind(kind: Kind):
+static func from_kind(k : Kind):
 	var scene = ShellScene.instantiate()
-	scene.kind = kind
+	scene.kind = k
 	return scene
 
 func update_shell_visibility():
@@ -45,6 +46,8 @@ func update_shell_visibility():
 			$ShellBasic.show()
 		Kind.POWER:
 			$PowerShell.show()
+		Kind.GOLDEN:
+			$ShellGolden.show()
 
 static func get_power(shell: Shell, is_dashing: bool):
 	var kind
@@ -60,6 +63,8 @@ static func get_power(shell: Shell, is_dashing: bool):
 				return 30
 			Kind.POWER:
 				return 100
+			Kind.GOLDEN:
+				return 30
 	match kind:
 		Kind.NONE:
 			return 3
@@ -67,3 +72,5 @@ static func get_power(shell: Shell, is_dashing: bool):
 			return 5
 		Kind.POWER:
 			return 10
+		Kind.GOLDEN:
+			return 2

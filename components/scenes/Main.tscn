@@ -8,7 +8,7 @@
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_s0jt8")
-metadata/Players = [NodePath("Turtles/Turtle"), NodePath("Turtles/Turtle2"), NodePath("Turtles/Turtle3"), NodePath("Turtles/Turtle4")]
+metadata/Players = [NodePath("Turtles/Turtle1"), NodePath("Turtles/Turtle2"), NodePath("Turtles/Turtle3"), NodePath("Turtles/Turtle4")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.31207, 0.950059, 0, -0.950059, 0.31207, 0, 49.5661, 17.8446)
@@ -18,17 +18,17 @@ fov = 25.0
 
 [node name="Turtles" type="Node" parent="."]
 
-[node name="Turtle" parent="Turtles" instance=ExtResource("1_emo1l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.86233, 0, -8.40672)
+[node name="Turtle1" parent="Turtles" instance=ExtResource("1_emo1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 0, 8)
 
 [node name="Turtle2" parent="Turtles" instance=ExtResource("1_emo1l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4797, 0, 7.22475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 8)
 
 [node name="Turtle3" parent="Turtles" instance=ExtResource("1_emo1l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5605, 0.103617, -8.09784)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 0.104, -8)
 
 [node name="Turtle4" parent="Turtles" instance=ExtResource("1_emo1l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4406, 0.171824, 7.16924)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0.172, -8)
 
 [node name="Level" type="Node" parent="."]
 

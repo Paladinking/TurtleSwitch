@@ -4,6 +4,10 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_52a55"]
 albedo_color = Color(0.529412, 1, 1, 1)
+metallic = 0.2
+metallic_specular = 0.2
+roughness = 0.2
+refraction_scale = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_at7u4"]
 top_radius = 5.0
